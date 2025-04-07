@@ -743,13 +743,20 @@ $('.gallery')
 })(jQuery);
 function openCity(evt, cityName) {
     var i, tabcontent, tablinks;
-  
-    // Ocultar todos los contenidos de pestañas
+
+    // Ocultar todos los contenidos de pestañas y descargar recursos
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
+
+        // Descargar imágenes y videos cuando se ocultan
+        const mediaElements = tabcontent[i].querySelectorAll("img[src], video[src], iframe[src]");
+        mediaElements.forEach(el => {
+            el.setAttribute("data-src", el.getAttribute("src"));
+            el.removeAttribute("src");
+        });
     }
-  
+
     // Remover la clase "active" de todos los botones
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
@@ -757,19 +764,26 @@ function openCity(evt, cityName) {
     }
 
     // Mostrar la pestaña actual y marcarla como activa
-    document.getElementById(cityName).style.display = "block";
+    var currentTab = document.getElementById(cityName);
+    currentTab.style.display = "block";
     evt.currentTarget.className += " active";
+
+    // Cargar imágenes y videos diferidos al mostrar la sección
+    const lazyElements = currentTab.querySelectorAll("img[data-src], video[data-src], iframe[data-src]");
+    lazyElements.forEach(el => {
+        el.setAttribute("src", el.getAttribute("data-src"));
+        el.removeAttribute("data-src");
+    });
 
     // Actualizar el título de la sección (solo si el ancho de la pantalla es mayor a 736px)
     var titleElement = document.getElementById("sectionTitle");
-    if (window.innerWidth > 736) { 
-        titleElement.innerText = cityName; // Usa el nombre de la pestaña
-        titleElement.style.display = "block"; // Mostrar el título
+    if (window.innerWidth > 736) {
+        titleElement.innerText = cityName;
+        titleElement.style.display = "block";
     } else {
-        titleElement.style.display = "none"; // Ocultar el título en móviles
+        titleElement.style.display = "none";
     }
 }
-
 // Obtén todos los enlaces
 const videoLinks = document.querySelectorAll('a[href]');
 const popup = document.getElementById('videoPopup');
