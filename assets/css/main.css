@@ -2501,7 +2501,7 @@ input, select, textarea {
 		}
 
 		.panel .span-5-75 {
-			width: 57.5rem;
+			width: 69rem;
 		}
 
 		.panel .span-6 {
@@ -3754,6 +3754,7 @@ input, select, textarea {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
+			flex-wrap:nowrap;
 
 			background-image: url("../../images/overlay.png");
 			background-color: #d62828;
@@ -3791,7 +3792,7 @@ input, select, textarea {
 			font-size: 11px;
 			padding: 5px; /* Un poco más de espacio interno */
 			background-color: #fcbf49;
-			color: white;
+			color: #003049;
 			transition: 0.3s;
 			text-align: center;
 		
@@ -3800,7 +3801,23 @@ input, select, textarea {
 		}
 		.absoluteB button:hover {
 			background-color: #003049;
+			color: #fcbf49;
 		}
+		.scroll-button {
+			position: fixed;
+			top: 50%;
+			transform: translateY(-50%);
+			z-index: 1000;
+			color: white;
+			background-color: #000000dc;
+			border-radius: 10%;
+			font-size: 2rem;
+			padding: 0.5rem;
+			cursor: pointer;
+			display: none;
+			visibility: hidden;
+		}
+		  
 	}
 	/* Style the tab */
 	@media (min-width: 736px){
@@ -3824,58 +3841,66 @@ input, select, textarea {
 			object-fit: contain;  /* Mantiene la proporción del video sin recortarlo ni distorsionarlo */
 		}
 		.tab {
-		width: 80px; /* Tamaño inicial pequeño */
-		height: 100%;
-		padding: 10px 5px;
+		width: 100%; /* Tamaño inicial pequeño */
+		height: 13%;
+		padding: 40px;
 		background-image: url("../../images/overlay.png");
 		background-color: #d62828;
 
 		transition: width 0.6s ease;
 		overflow: visible;
-		display: flex;
+		
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1001;
 		flex-wrap: nowrap;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-evenly;
+
+		flex-direction: row;
+		justify-content: center;
+		align-content: center;
+
 	  }
 	
 	  
 	  .absoluteB
 	  {
-		position: absolute;
 		z-index: 1001;
 		display: flex;
-		flex-direction: column;
+		
+		flex-direction: row;
+		position: relative;
+		left: 10%;
 		gap: 40px;
-		width: 5%;
+		width: 100%;
 		margin-left: 7.5px;
 		
-		left: 0;
 	  }
 	  .absoluteB button {
-
-		width: 65px; /* Tamaño igual para mantener forma circular */
-
-		height: 65px;
+		overflow: hidden;
 		border: none;
+		height: auto; /* Permite que crezca si hay más líneas */
+		min-height: 50px; /* Asegura un alto mínimo */
+		height: 50px;
+		width: 17%; /* Expande el botón para mostrar el texto cuando la tab está expandida */
+		line-height: 1.5; /* Espacio entre líneas */
+		border-radius: 20px;
 		outline: none;
 		cursor: pointer;
-		font-size: 15px;
-		border-radius: 50%;
+		font-size: 20px;
+		padding: 5px; /* Un poco más de espacio interno */
 		background-color: #fcbf49;
-		color: #fcbf49;
+		color: #003049;
 		transition: 0.3s;
-		overflow: hidden;
-		white-space: nowrap;
-		text-align: left;
-		padding-left: 23px;
-	  }
+		text-align: center;
+	
+	}
 	
 	
 	  .absoluteB button:hover  {
-		width: 250px; /* Expande el botón para mostrar el texto cuando la tab está expandida */
-		font-size: 15px;
-		height: 50px;
+		width: 20%; /* Expande el botón para mostrar el texto cuando la tab está expandida */
+		height: 100%;
+		font-size: 22px;
 		color:#003049;
 		text-align: center;
 		border-radius: 20px;
@@ -3883,55 +3908,24 @@ input, select, textarea {
 	
 	 
 	  .absoluteB  button.active:hover {
-		background-color: #fcbf49;
-		font-size: 15px;
-		letter-spacing: 1px;
-		padding-left: 14px; /* Ajusta el valor según lo necesites */
-		text-align: center;
-		color: #fdd997;
+		border: #fcbf49,1.5px solid;
+		background-color: #003049;
+		color: #fcbf49;
+		width: 18%;
 		box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 	  }
 	  
 	  .absoluteB  button.active {
-		background-color: #fcbf49;
-		font-size: 50px;
-		letter-spacing: 16px;
-		padding-left: 14px; /* Ajusta el valor según lo necesites */
-		
-		color: #003049;
+		border: #fcbf49,1.5px solid;
+		background-color: #003049;
+		color: #fcbf49;
+		width: 18%;
 		box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 	  }
-	  #WorkExpTab.active {
-		background-color: #fcbf49;
-		font-size: 50px;
-		letter-spacing: 16px;
-		padding-left: 10px; /* Ajusta el valor según lo necesites */
-		
-		color: #003049;
-		box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-	}
-	.absoluteB   #WorkExpTab.active:hover {
-		font-size: 15px;
-		letter-spacing: 1px;
-		padding-left: 23px; /* Ajusta el valor según lo necesites */
-	  }
+
 	
 	}
-	.section-title {
-		position: absolute;
-		bottom: 100%;
-		left: 5.00175%;
-		transform: translateX(-50%);
-		background-image: url("../../images/overlay.png"); 
-		background-color:  #FCBF49;
-		color: #003049;
-		font-size: 24px;
-		font-weight: bold;
-		width: 10%;
-		z-index: 1000;
-		display: none; /* Inicialmente oculto */
-		text-align: center;
-	}
+	
 	
 /* Style the tab content */
 .tabcontent {
@@ -3939,6 +3933,7 @@ input, select, textarea {
   border: none;
   border-top: none;
   align-content: center;
+  justify-content: center;
 }
 .popup {
     position: fixed;
@@ -3957,10 +3952,10 @@ input, select, textarea {
 
 .close-btn {
     position: fixed;
-    top: 0.5rem;
-    right: 0.5rem;
-    width: 4rem;
-    height: 4rem;
+    top: 1rem;
+    width: 6rem;
+	right: 4rem;
+    height: 6rem;
     background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="64px" height="64px" viewBox="0 0 64 64"%3E%3Cline x1="20" y1="20" x2="44" y2="44" style="stroke: rgba(255, 255, 255, 0.875); stroke-width: 2px;" /%3E%3Cline x1="20" y1="44" x2="44" y2="20" style="stroke: rgba(255, 255, 255, 0.875); stroke-width: 2px;" /%3E%3C/svg%3E');
     background-position: center;
     background-repeat: no-repeat;
@@ -3970,6 +3965,9 @@ input, select, textarea {
     outline: none;
     transition: 0.3s;
     background-color: transparent;
+}
+.actions{
+	display: none;
 }
 .hidden {
 	display: none;
@@ -3984,5 +3982,107 @@ p{
 	color: #003049;
 }
 li{
+	
 	color : #003049;
 }
+.scroll-button {
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 1000;
+	color: white;
+	background-color: #000000dc;
+	border-radius: 10%;
+	font-size: 2rem;
+	padding: 0.5rem;
+	cursor: pointer;
+	display: none;
+}
+  
+  .scroll-button.left {
+	left: 10px;
+  }
+  
+  .scroll-button.right {
+	right: 10px;
+  }
+  .tabContactInfo {
+	width: 100%; /* Tamaño inicial pequeño */
+	height: 1%;
+	padding: 40px;
+	visibility: hidden;
+	background-image: url("../../images/overlay.png");
+	background-color: #d62828;
+
+	transition: width 0.6s ease;
+	overflow: visible;
+	
+	position: fixed;
+	bottom:  0;
+	left: 0;
+	z-index: 1001;
+	
+	justify-content: space-around;
+	align-content: center;
+
+  }
+  .tabContactInfo .visible {
+	width: 100%; /* Tamaño inicial pequeño */
+	height: 1%;
+	padding: 40px;
+	visibility: visible;
+
+	background-image: url("../../images/overlay.png");
+	background-color: #d62828;
+
+	transition: width 0.6s ease;
+	overflow: visible;
+	
+	position: fixed;
+	bottom:  0;
+	left: 0;
+	z-index: 1001;
+	
+	justify-content: space-around;
+	align-content: center;
+
+  }
+  .tabContactInfo ul.contact-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; /* espacio entre íconos */
+  margin-top: -40px;
+  list-style: none;
+  flex-wrap: wrap; /* por si el espacio es chico en móviles */
+  height: 0;
+}
+
+.tabContactInfo ul.contact-icons li {
+  display: flex;
+  align-items: center;
+
+}
+.inner .contact-icons li {
+	font-size: 1.5rem; /* Agranda el texto y el ícono proporcionalmente */
+  }
+  
+  
+  
+  .inner .contact-icons li b {
+	font-size: 1.2em; /* Un poco más grande que el ícono */
+  }
+  
+  .content.color0.span-5-75 h1.major {
+	font-size: 3.5rem; /* agranda el título */
+	line-height: 1.2;
+  }
+  
+  .content.color0.span-5-75 p {
+	font-size: 1.5rem; /* agranda el texto de bienvenida */
+	margin-top: 1rem;
+  }
+  
+ 
+  

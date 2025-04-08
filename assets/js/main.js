@@ -775,15 +775,23 @@ function openCity(evt, cityName) {
         el.removeAttribute("data-src");
     });
 
-    // Actualizar el título de la sección (solo si el ancho de la pantalla es mayor a 736px)
-    var titleElement = document.getElementById("sectionTitle");
-    if (window.innerWidth > 736) {
-        titleElement.innerText = cityName;
-        titleElement.style.display = "block";
+    // Mostrar u ocultar la barra de contacto dependiendo de la sección
+    const contactBar = document.querySelector(".tabContactInfo");
+	const contentArrow = document.querySelector(".scroll-button");
+    if (cityName === "About Me") {
+		contentArrow.style.display = "none";
+
+        contactBar.classList.remove("visible");
+        contactBar.style.visibility = "hidden";
     } else {
-        titleElement.style.display = "none";
+		contentArrow.style.display = "block";
+        contactBar.classList.add("visible");
+        contactBar.style.visibility = "visible";
     }
+
+    window.scrollTo(0, 0);
 }
+
 // Obtén todos los enlaces
 const videoLinks = document.querySelectorAll('a[href]');
 const popup = document.getElementById('videoPopup');
