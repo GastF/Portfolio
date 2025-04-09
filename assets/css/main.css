@@ -2022,7 +2022,7 @@ input, select, textarea {
 			}
 
 			.gallery .group .span-1 {
-				width: 33.33333%;
+				width: 100%;
 			}
 
 			.gallery .group .span-1-25 {
@@ -2030,7 +2030,7 @@ input, select, textarea {
 			}
 
 			.gallery .group .span-1-5 {
-				width: 49.99999%;
+				width: 100%;
 			}
 
 			.gallery .group .span-1-75 {
@@ -2425,7 +2425,8 @@ input, select, textarea {
 		}
 
 		.panel .span-1 {
-			width: 10rem;
+			height: 50%;
+			width: 10%;
 		}
 
 		.panel .span-1-25 {
