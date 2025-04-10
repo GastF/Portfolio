@@ -4106,6 +4106,71 @@ li{
 	font-size: 1.5rem; /* agranda el texto de bienvenida */
 	margin-top: 1rem;
   }
+  @media (min-width: 1921px) {
+	.tab
+	{
+	  width: 100%; /* Tamaño inicial pequeño */
+	  height: 8%;
+	  padding: 40px;
+	  background-image: url("../../images/overlay.png");
+	  background-color: #d62828;
+	
+	  transition: width 0.6s ease;
+	  overflow: visible;
+	  
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  z-index: 1001;
+	  flex-wrap: nowrap;
+	
+	  flex-direction: row;
+	  justify-content: center;
+	  align-content: center;	
+	}
+	.tabContactInfo {
+		width: 100%; /* Tamaño inicial pequeño */
+		height: 8%;
+		padding: 50px;
+		visibility: hidden;
+		background-image: url("../../images/overlay.png");
+		background-color: #011925;
+	
+		transition: width 0.6s ease;
+		overflow: visible;
+		
+		position: fixed;
+		bottom:  0;
+		left: 0;
+		z-index: 1001;
+		
+		justify-content: space-around;
+		align-content: center;
+	
+	  }
+	  
+	  .tabContactInfo ul.contact-icons {
+	  display: flex;
+	  flex-direction: row;
+	  justify-content: center;
+	  align-items: center;
+	  gap: 10rem; /* espacio entre íconos */
+	  margin-top: -80px;
+	  list-style: none;
+	  flex-wrap: wrap; /* por si el espacio es chico en móviles */
+	  height: 0;
+	}
+	
+	.tabContactInfo ul.contact-icons li {
+	  display: flex;
+	  align-items: center;
+	
+	}
+	.absoluteB {
+	  margin: 0 auto; /* Centra horizontalmente */
+	}
+  }
+  
   
  
   
