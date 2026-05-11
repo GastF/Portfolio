@@ -1,361 +1,284 @@
-<!DOCTYPE HTML>
-<!--
-	Ethereal by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Gastón Flores Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		
-		<!-- Page Wrapper -->
-		<div class="tabContactInfo">
-			<ul class="contact-icons color1"> 
-				<li class="icon brands fa-itch-io"><a href="https://ghastt.itch.io/"><b>Itch.io </b></a></li>
-				<li class="icon brands fa-github"><a href="https://github.com/GastF"><b>GitHub </b></a></li>
-				<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/gastonf/"><b>Linkedin </b></a></li>
-				<li class="icon solid fa-paperclip"><a href="https://drive.google.com/file/d/1IeNpHSAb82Mbjjlq1Vacc0SrDqllmy0v/view?usp=sharing"><b>Resume</b></a></li>
-			</ul>
-		</div>
-		</div>
-			<div id="page-wrapper">
-				<!-- Wrapper -->
-				 
-				<div id="scroll-right" class="scroll-button right">&#9654;</div>
-				
-					<div id="wrapper">
-						<!-- Tab links -->
-						
-				<div class="tab">
-					<div class="absoluteB">
-					<button class="tablinks" onclick="openCity(event, 'About Me')"id="defaultOpen">About Me</button></button> 
-					<button class="tablinks" onclick="openCity(event, 'Work Experience')"id="WorkExpTab">Work Experience</button>
-					<button class="tablinks" onclick="openCity(event, 'Personal Projects')"id="ProjectsTab">Personal Projects</button>
-					<button class="tablinks" onclick="openCity(event, 'Game Jams')"id="GameJamsTab">Game Jams</button>
-					</div>
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="UTF-8" />
+
+	<meta name="viewport"
+	      content="width=device-width, initial-scale=1.0" />
+
+	<title>Gastón Flores | Unity Game Developer</title>
+
+	<!-- FONT AWESOME -->
+	<link rel="stylesheet"
+	      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="assets/css/style.css" />
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+
+	<div class="logo">
+		Gastón Flores
+	</div>
+
+	<nav>
+
+		<button class="nav-button active"
+		        data-section="about-section">
+			About
+		</button>
+
+		<button class="nav-button"
+		        data-section="projects-section">
+			Projects
+		</button>
+
+	</nav>
+
+</header>
+
+<!-- MAIN -->
+<main>
+
+	<!-- ABOUT -->
+	<section id="about-section"
+	         class="page-section active-section">
+
+		<div class="hero">
+
+			<div class="hero-content">
+
+				<p class="eyebrow">
+					Unity Game Developer
+				</p>
+
+				<h1>
+					Gameplay Programmer
+					<br>
+					Technical Artist
+				</h1>
+
+				<p class="hero-description">
+
+					I specialize in gameplay programming,
+					shaders, VFX and game feel.
+
+					My focus is building polished and memorable
+					experiences that feel great to play.
+
+				</p>
+
+				<div class="socials">
+
+					<a href="https://github.com/GastF"
+					   target="_blank">
+						<i class="fa-brands fa-github"></i>
+					</a>
+
+					<a href="https://linkedin.com/in/gastonf/"
+					   target="_blank">
+						<i class="fa-brands fa-linkedin"></i>
+					</a>
+
+					<a href="https://ghastt.itch.io/"
+					   target="_blank">
+						<i class="fa-brands fa-itch-io"></i>
+					</a>
+
 				</div>
-				
-				<!-- Popup Container -->
-				<div id="videoPopup" class="popup" style="display: none;">
-					<div class="popup-content">
-						<video id="popupVideo" controls>
-							<source src="" type="video/webm">
-							Tu navegador no soporta el formato de video.
-						</video>
-						<button id="closePopup" class="close-btn"></button>
-					</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<!-- PROJECTS -->
+	<section id="projects-section"
+	         class="page-section hidden-section">
+
+		<!-- FILTERS -->
+		<div class="filters">
+
+			<button class="filter-button active"
+			        data-filter="all">
+				All
+			</button>
+
+			<button class="filter-button"
+			        data-filter="professional">
+				Professional
+			</button>
+
+			<button class="filter-button"
+			        data-filter="gamejam">
+				Game Jam
+			</button>
+
+			<button class="filter-button"
+			        data-filter="personal">
+				Personal
+			</button>
+
+			<button class="filter-button"
+			        data-filter="gameplay">
+				Gameplay
+			</button>
+
+			<button class="filter-button"
+			        data-filter="vfx">
+				VFX
+			</button>
+
+		</div>
+
+		<!-- GRID -->
+		<div class="projects-grid">
+
+			<!-- PROJECT -->
+			<div class="project-card"
+			     data-category="professional gameplay vfx">
+
+				<div class="project-thumbnail">
+
+					<img src="images/gallery/Mokens/3.gif"
+					     alt="">
+
 				</div>
-						<!-- Tab content -->
-						<div id="About Me" class="tabcontent" class="active">
-							<!-- Panel (Banner) -->
-							 
-							<section class="panel banner right">
-								<section class="panel color1">
-									<div class="inner columns divided">
-										<div class="span-1-5">
-											<ul class="contact-icons color1"> 
-												<li class="icon brands fa-itch-io"><a href="https://ghastt.itch.io/"><b>Itch.io </b></a></li>
-												<li class="icon brands fa-github"><a href="https://github.com/GastF"><b>GitHub </b></a></li>
-												<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/gastonf/"><b>Linkedin </b></a></li>
-												<li class="icon solid fa-paperclip"><a href="https://drive.google.com/file/d/1IeNpHSAb82Mbjjlq1Vacc0SrDqllmy0v/view?usp=sharing"><b>Resume</b></a></li>
-											</ul>
-									</div>
-								</section>
-								<div class="content color0 span-5-75">
-									<h1 class="major"><b>Gastón Flores <br>Unity Game Developer</b></h1>
-									<p><b>I have a knack for VFX, shaders, and gameplay programming.
-										My main focus is bringing ideas to life with as much polish and feeling as possible, always aiming to deliver the best possible gaming experience to the player.</b></p>
-									<ul class="actions">
-										<li><a href="#first" class="button primary color1 circle icon solid fa-angle-right" id="arrow" >Next</a></li> 
-									</ul>
-									
-								</div>
-								
-							</section>
-						</div>
-						<!-- Tab content -->
-						<div id="Work Experience" class="tabcontent" class="hidden">
-							<section class="panel">
-								
-								<!-- Intro Tab -->
-								<div class="intro color1">
-									<h2 class="major">Work Experience</h2>
-									<p><b>Here you can take a look at some of the freelance jobs i did or places i've worked at!</b></p>
-									<ul class="contact-icons color1"> 
-										<li class="icon brands fa-itch-io"><a href="https://ghastt.itch.io/"><b>Itch.io</b> </a></li>
-										<li class="icon brands fa-github"><a href="https://github.com/GastF"><b>GitHub</b> </a></li>
-										<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/gastonf/"><b>Linkedin</b></a></li>
-										<li class="icon solid fa-paperclip"><a href="https://drive.google.com/file/d/1IeNpHSAb82Mbjjlq1Vacc0SrDqllmy0v/view?usp=sharing"><b>Resume</b></a></li>
-									</ul>
-								</div>
-								<!-- First Tab -->
-								<div class="intro color4">
-									<h2 class="major">Mokens League</h2>
-									<p> Multi-platform multiplayer soccer game.
-										
-										<ul> 
-											<li >Photon quantum for deterministic real time multiplayer</li>
-											<li >Client server API communication</li>
-											<li >VFX with Animations and Particle System</li>
-											<li >Integrated a localization system</li>
-											<li >Memory and CPU optimization on Mobile devices</li>
-										</ul>
-										<ul class="contact-icons color1"> 
-											<li class="icon brands fa-google-play"><a href="https://play.google.com/store/apps/details?id=com.mokensleague.mobile.alpha&pcampaignid=web_share"> Play it here!</a></li>
-										</ul>
-									</p>
-								</div>
-								<div class="gallery">
-									<div class="group span-3">
-										<a href="images/gallery/Mokens/3.mp4"
-											class="image  span-3"
-											data-position="bottom">
-											<img data-src="images/gallery/Mokens/3.gif" alt="" />
-										</a>
-										<a href="images/gallery/Mokens/2.mp4" class="image  span-1-5" data-position="center">
-											<img data-src="images/gallery/Mokens/2.gif" alt="" />
-										</a>
-										
-										<a href="images/gallery/Mokens/vfx.mp4" class="image  span-1-5" data-position="center"><img data-src="images/gallery/Mokens/vfx.gif" alt="" /></a>
-									</div>
-									
-								</div>
 
-								
+				<div class="project-content">
 
-								<!-- Second Tab -->
-								<div class="intro color4">
-									<h2 class="major">Freelance Work</h2>
-									<p>I have experience with freelance work that I am unable to showcase here, but I would be happy to provide a demo reel of my projects upon request via email.</p>
-									<ul class="contact-icons color1"> 
-									</ul>
-								</div>
-								
-							</section>
-						</div>
-						<!-- Tab content -->
-						<div id="Personal Projects" class="tabcontent" class="hidden">
-							<section class="panel">
-								<div class="intro color1">
-									<h2 class="major">Personal Projects</h2>
-									<p><b>This are some of the projects im currently working on! I plan on publishing some of them to steam once they are at an acceptable level for users to enjoy!</b></p>
-									<ul class="contact-icons color1"> 
-										<li class="icon brands fa-itch-io"><a href="https://ghastt.itch.io/"><b>Itch.io</b> </a></li>
-										<li class="icon brands fa-github"><a href="https://github.com/GastF"><b>GitHub </b></a></li>
-										<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/gastonf/"><b>Linkedin</b> </a></li>
-										<li class="icon solid fa-paperclip"><a href="https://drive.google.com/file/d/1IeNpHSAb82Mbjjlq1Vacc0SrDqllmy0v/view?usp=sharing"><b>Resume</b></a></li>
-									</ul>
-								</div>
-								<!-- GAME 3-->
-								<div class="intro color4">
-									<h2 class="major">The king wave</h2>
-								<p> Tower defense game developed with scalability in mind
-									<ul> 
-										<li>Gameplay programming</li>
-										<li>UI Programming</li>
-										<li>Data oriented designed</li>
-										<li>ShaderGraph </li>
-										<li>Object pooling</li>
-										<li>Enemies, Waves and Towers managed by scriptable objects</li>
-									</ul>
-									<ul class="contact-icons color1"> 
-									<li>Still under Development</li>
-									<li class="icon brands fa-itch-io"><a href="https://ghastt.itch.io/the-king-wave"> Play it here!</a></li>
+					<h3>Mokens League</h3>
 
-									</ul>
-								</p>
-									<ul class="contact-icons color1"> 
-									</ul>
-								</div>
-								<div class="gallery">
-									<div class="group span-3">
-										<a class="image  span-3"
-										href="images/gallery/TowerDefense/3.jpg"
-											data-position="bottom">
-											<img data-src="images/gallery/TowerDefense/3.jpg" alt="" />
-										</a>
-										<a href="images/gallery/TowerDefense/1.webm" class="image  span-1-5" data-position="center"><img data-src="images/gallery/TowerDefense/1.gif" alt="" /></a>
-										<a href="images/gallery/TowerDefense/2.webm" class="image  span-1-5" data-position="bottom"><img data-src="images/gallery/TowerDefense/2.gif" alt="" /></a>
-									</div>
-								</div>	
-								<!-- GAME 3-->
-								<div class="intro color4">
-									<h2 class="major">Parvo</h2>
-								<p> An adventure plataformer about a small knight with the biggest sword
-									<ul> 
-										<li>Gameplay programming</li>
-										<li>UI Programming</li>
-										<li>Enemies AI</li>
-										<li>Level Design</li>
-										<li>Game Design</li>
-									</ul>
-									<ul class="contact-icons color1"> 
-										<li class="icon brands fa-itch-io"><a href="https://ghastt.itch.io/parvo"> Play it here!</a></li>
-									</ul>
-								</p>
-									<ul class="contact-icons color1"> 
-									</ul>
-								</div>
-								<div class="gallery">
-									<div class="group span-3">
-										<a class="image  span-3"
-										href="images/gallery/Parvo/1.png"
-											data-position="bottom">
-											<img data-src="images/gallery/Parvo/1.png" alt="" />
-										</a>
-										<a href="images/gallery/Parvo/2.mp4" class="image  span-1-5" data-position="center"><img data-src="images/gallery/Parvo/2.gif" alt="" /></a>
-										<a href="images/gallery/Parvo/3.mp4" class="image  span-1-5" data-position="bottom"><img data-src="images/gallery/Parvo/3.gif" alt="" /></a>
-									</div>
-								</div>	
-							
-						</section>
-						</div>
-						<!-- Tab content -->
-						<div id="Game Jams" class="tabcontent" class="hidden">	
-							<section class="panel">
-									<div class="intro color1">
-										<h2 class="major">Game Jams</h2>
-										<p><b>Here you can find a bunch of the different projects i developed in shorts periods of time!</b></p>
-										<ul class="contact-icons color1"> 
-											<li class="icon brands fa-itch-io"><a href="https://ghastt.itch.io/"><b>Itch.io</b> </a></li>
-											<li class="icon brands fa-github"><a href="https://github.com/GastF"><b>GitHub </b></a></li>
-											<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/gastonf/"><b>Linkedin </b></a></li>
-											<li class="icon solid fa-paperclip"><a href="https://drive.google.com/file/d/1IeNpHSAb82Mbjjlq1Vacc0SrDqllmy0v/view?usp=sharing"><b>Resume</b></a></li>
-										</ul>
-									</div>
-									<!-- GAME 1-->
-									<div class="intro color4">
-										<h2 class="major">Bubble Defender</h2>
-									<p>GGJ 2025 a Tower defense about protecting the bubble kingdom
-										<ul> 
-											<li>Gameplay programming</li>
-											<li>Particle Systems and VFX</li>
-											<li>Basic Waving Shader made in ShaderGraph</li>
-											<li>Towers enemy targeting system</li>
-										</ul>
-										<ul class="contact-icons color1"> 
-											<li class="icon brands fa-itch-io"><a href="https://ghastt.itch.io/bubble-defender"> Play it here!</a></li>
-										</ul>
-									</p>
-										<ul class="contact-icons color1"> 
-										</ul>
-									</div>
-									<div class="gallery">
-										<div class="group span-3">
-											<a href="images/gallery/BubbleDefender/1.jpg"
-												class="image  span-3"
-												
-												
-												data-position="bottom"> 
-												<img data-src="images/gallery/BubbleDefender/1.jpg" alt="" />
-											</a>
-											<a href="images/gallery/BubbleDefender/01.mp4" class="image  span-1-5" data-position="center"><img data-src="images/gallery/BubbleDefender/01.gif" alt="" /></a>
-											<a href="images/gallery/BubbleDefender/3.jpg" class="image  span-1-5" data-position="bottom"><img data-src="images/gallery/BubbleDefender/3.jpg" alt="" /></a>
-										</div>
-									</div>
-											<!-- GAME 3-->
-								<div class="intro color4">
-									<h2 class="major">Parvo</h2>
-								<p> An adventure plataformer about a small knight with the biggest sword
-									<ul> 
-										<li>Gameplay programming</li>
-										<li>UI Programming</li>
-										<li>Enemies AI</li>
-										<li>Level Design</li>
-										<li>Game Design</li>
-									</ul>
-									<ul class="contact-icons color1"> 
-										<li class="icon brands fa-itch-io"><a href="https://ghastt.itch.io/parvo"> Play it here!</a></li>
-									</ul>
-								</p>
-									<ul class="contact-icons color1"> 
-									</ul>
-								</div>
-								<div class="gallery">
-									<div class="group span-3">
-										<a class="image  span-3"
-										href="images/gallery/Parvo/1.png"
-											data-position="bottom">
-											<img data-src="images/gallery/Parvo/1.png" alt="" />
-										</a>
-										<a href="images/gallery/Parvo/2.mp4" class="image  span-1-5" data-position="center"><img data-src="images/gallery/Parvo/2.gif" alt="" /></a>
-										<a href="images/gallery/Parvo/3.mp4" class="image  span-1-5" data-position="bottom"><img data-src="images/gallery/Parvo/3.gif" alt="" /></a>
-									</div>
-								</div>	
-								<!-- GAME 2-->
-								<div class="intro color4">
-									<h2 class="major">Guau! Boutique para perros</h2>
-								<p> Arcade game about Dressing dogs for the winter
-									<ul> 
-										<li>Gameplay programming</li>
-										<li>Particle Systems and VFX</li>
-										<li>Game Design</li>
-										<li>General programming</li>
-										<li>Outline shader with ShaderGraph</li>
-									</ul>
-									<ul class="contact-icons color1"> 
-										<li class="icon brands fa-itch-io"><a href="https://ghastt.itch.io/guau-boutique-para-perros"> Play it here!</a></li>
-									</ul>
-								</p>
-									<ul class="contact-icons color1"> 
-									</ul>
-								</div>
-								<div class="gallery">
-									<div class="group span-3">
-										
-										<a href="images/gallery/Woof/Tuto.mp4"class="image  span-3"
-											data-position="bottom">
-											<img data-src="images/gallery/Woof/Tuto.gif" alt="" />
-										</a>
-										<a href="images/gallery/Woof/2.mp4" class="image  span-1-5" data-position="center"><img data-src="images/gallery/Woof/2.gif" alt="" /></a>
-										<a href="images/gallery/Woof/3.mp4" class="image  span-1-5" data-position="bottom"><img data-src="images/gallery/Woof/3.gif" alt="" /></a>
-									</div>
-								</div>
-								<!-- GAME 3-->
-								<div class="intro color4">
-									<h2 class="major">Poltergeist</h2>
-								<p> Point'n click game about a little ghost who wants to scare someone!
-									<ul> 
-										<li>Gameplay programming</li>
-										<li>Drag and throw mechanic</li>
-										<li>UI Programming</li>
-										<li>Animator triggering</li>
-										<li>Game Design</li>
-									</ul>
-									<ul class="contact-icons color1"> 
-										<li class="icon brands fa-itch-io"><a href="https://ghastt.itch.io/poltergeist"> Play it here!</a></li>
-									</ul>
-								</p>
-									<ul class="contact-icons color1"> 
-									</ul>
-								</div>
-								<div class="gallery">
-									<div class="group span-3">
-										<a class="image  span-3"
-										href="images/gallery/Poltergeist/gameplay.mp4"
-											data-position="bottom">
-											<img data-src="images/gallery/Poltergeist/gameplay.gif" alt="" />
-										</a>
-										<a href="images/gallery/Poltergeist/Comic1.mp4" class="image  span-1-5" data-position="center"><img data-src="images/gallery/Poltergeist/Comic1.gif" alt="" /></a>
-										<a href="images/gallery/Poltergeist/comic2.png" class="image  span-1-5" data-position="bottom"><img data-src="images/gallery/Poltergeist/comic2.png" alt="" /></a>
-									</div>
-								</div>	
-						
-							</section>
-						</div>
-						  
+					<p>
+						Multiplayer football game developed for
+						mobile and PC.
+					</p>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/main.js"></script>
+					<div class="project-tags">
 
-	</body>
+						<span>Professional</span>
+						<span>Multiplayer</span>
+						<span>Gameplay</span>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- PROJECT -->
+			<div class="project-card"
+			     data-category="gamejam gameplay vfx">
+
+				<div class="project-thumbnail">
+
+					<img src="images/gallery/BubbleDefender/01.gif"
+					     alt="">
+
+				</div>
+
+				<div class="project-content">
+
+					<h3>Bubble Defender</h3>
+
+					<p>
+						Tower defense game about protecting
+						the bubble kingdom.
+					</p>
+
+					<div class="project-tags">
+
+						<span>Game Jam</span>
+						<span>Gameplay</span>
+						<span>VFX</span>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- PROJECT -->
+			<div class="project-card"
+			     data-category="personal gameplay">
+
+				<div class="project-thumbnail">
+
+					<img src="images/gallery/Parvo/2.gif"
+					     alt="">
+
+				</div>
+
+				<div class="project-content">
+
+					<h3>Parvo</h3>
+
+					<p>
+						Adventure platformer about a tiny knight
+						with a giant sword.
+					</p>
+
+					<div class="project-tags">
+
+						<span>Personal</span>
+						<span>Gameplay</span>
+						<span>AI</span>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- PROJECT -->
+			<div class="project-card"
+			     data-category="gamejam gameplay">
+
+				<div class="project-thumbnail">
+
+					<img src="images/gallery/Poltergeist/gameplay.gif"
+					     alt="">
+
+				</div>
+
+				<div class="project-content">
+
+					<h3>Poltergeist</h3>
+
+					<p>
+						Point & click game about a ghost trying
+						to scare someone.
+					</p>
+
+					<div class="project-tags">
+
+						<span>Game Jam</span>
+						<span>Gameplay</span>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+</main>
+
+<!-- JAVASCRIPT -->
+<script src="assets/js/script.js"></script>
+
+</body>
+
 </html>
