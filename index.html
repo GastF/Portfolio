@@ -27,30 +27,31 @@
 			--display: 'Bebas Neue', sans-serif;
 			--body:    'DM Sans', sans-serif;
 
-			/* LIGHT MODE (default) — vibrante */
-			--bg:           #FCBF49;
-			--bg-secondary: #F77F00;
-			--bg-card:      rgba(0,48,73,0.08);
-			--bg-card-hover:rgba(0,48,73,0.14);
+			/* LIGHT MODE (default) — vibrant */
+			--bg:           #003049;
+			--bg-secondary: #FCBF49;
 			--bg-nav:       #D62828;
-			--text-primary: #003049;
+			
+			--info-right-text: #003049;
+			--info-right-subtext: #003049;
+			--info-right-bg: #003049;
+			--info-sumbit-bg: #003049;
+			--info-sumbit-color: #FCBF49;
+			
+			--text-primary: #FCBF49;
 			--text-muted:   rgba(0,48,73,0.65);
 			--text-on-red:  #FCBF49;
 			--border-subtle:rgba(0,48,73,0.15);
-			--tag-bg:       rgba(0,48,73,0.12);
-			--tag-color:    #003049;
-			--tag-border:   rgba(0,48,73,0.25);
-			--tag-red-bg:   rgba(0,48,73,0.15);
-			--tag-red-color:#003049;
-			--filter-border:rgba(0,48,73,0.25);
-			--filter-color: rgba(0,48,73,0.6);
-			--filter-hover: #003049;
+			
 			--grid-gap:     rgba(0,48,73,0.12);
 			--card-img-bg:  #b82020;
-			--skill-tag-bg: rgba(0,48,73,0.08);
-			--skill-tag-border: rgba(0,48,73,0.2);
+			
+			--skill-tag-bg: rgb(214 40 40);
+			--skill-tag-border: rgb(0 48 73);
 			--skill-tag-color: #003049;
-			--about-right-bg: #F77F00;
+			--about-right-bg: #FCBF49;
+			--about-right-border: rgb(214 40 40);
+			
 			--modal-bg:     #FCBF49;
 			--modal-left-bg:#003049;
 			--modal-border: rgba(0,48,73,0.15);
@@ -60,6 +61,29 @@
 			--modal-divider: rgba(0,48,73,0.12);
 			--modal-thumb-bg: rgba(0,48,73,0.4);
 			--toggle-icon:  '🌙';
+			
+			/* CARDS (Aquí editas la estética de los proyectos) */
+			--card-bg: rgb(252 191 73);
+			--card-bg-hover: rgb(252 191 73);
+			--card-border: rgb(14 14 13);
+			--card-shadow:       rgba(0, 0, 0, 0.15);
+			--card-title: #003049;
+			--card-desc: rgb(0 48 73);
+			--card-img-overlay: rgb(252 191 73);
+			--tag-red-bg: rgba(14 ,14 ,13 ,0.2);
+			--tag-red-color: #003049;
+			--tag-yellow-bg: rgba(14 ,14 ,13 ,0.2);
+			--tag-yellow-color: #003049;
+			--tag-blue-bg: rgba(14 ,14 ,13 ,0.2);
+			--tag-blue-color: #003049;
+			
+			/* TAGS Y FILTROS */
+			--filter-btn-border: rgb(252 191 73);
+			--filter-btn-text: rgb(252 191 73);
+			--filter-active-bg: #fcbf49;
+			--filter-active-text: #003049;
+			--filter-hover-text: #fcbf49;
+			--filter-hover: #003049;
 		}
 
 		/* DARK MODE */
@@ -68,16 +92,20 @@
 			--bg-secondary: #002337;
 			--bg-card:      rgba(0,48,73,0.5);
 			--bg-card-hover:rgba(0,48,73,0.85);
-			--bg-nav:       #003049;
+			--bg-nav:       #D62828;
 			--text-primary: #ffffff;
 			--text-muted:   rgba(255,255,255,0.6);
 			--text-on-red:  #FCBF49;
 			--border-subtle:rgba(255,255,255,0.08);
 			--tag-bg:       rgba(252,191,73,0.12);
 			--tag-color:    #FCBF49;
-			--tag-border:   rgba(252,191,73,0.25);
-			--tag-red-bg:   rgba(214,40,40,0.12);
-			--tag-red-color:#ff9090;
+			--tag-border: rgb(214 40 40 / 0.87);
+			--tag-red-bg: rgba(252,191,73,0.12);
+			--tag-yellow-bg: rgb(252 191 73);
+			--tag-blue-bg: rgba(252,191,73,0.12);
+			--tag-yellow-color:#FCBF49FF;
+			--tag-red-color:#FCBF49;
+			--tag-blue-color: #FCBF49;
 			--filter-border:rgba(255,255,255,0.2);
 			--filter-color: rgba(255,255,255,0.55);
 			--filter-hover: #ffffff;
@@ -96,6 +124,22 @@
 			--modal-divider: rgba(255,255,255,0.07);
 			--modal-thumb-bg: rgba(0,0,0,0.6);
 			--toggle-icon:  '☀️';
+			
+			/* CARDS DARK */
+			--card-bg:           rgba(0, 48, 73, 0.5);
+			--card-bg-hover:     rgba(0, 48, 73, 0.85);
+			--card-border:       rgba(255, 255, 255, 0.08);
+			--card-shadow:       rgba(0, 0, 0, 0.4);
+			--card-title: #fcbf49;
+			--card-desc:         rgba(255, 255, 255, 0.6);
+			--card-img-overlay:  rgba(0, 0, 0, 0.7);
+
+			/* TAGS Y FILTROS DARK */
+			--filter-btn-border: rgba(255, 255, 255, 0.2);
+			--filter-btn-text:   rgba(255, 255, 255, 0.55);
+			--filter-active-bg:  #D62828;
+			--filter-active-text: #ffffff;
+
 		}
 
 		html { scroll-behavior: smooth; }
@@ -186,7 +230,7 @@
 			color: #fff; 
 		}
 		.nav-btn.active {
-			background-color: #F7D081;
+			background-color: var(--amber);
 			color: #003049;
 			border-color: #003049;
 			transform: scale(1.05); /* Un poco más grande que el estado reposo */
@@ -259,20 +303,20 @@
 			content: '';
 			position: absolute;
 			right: 0; top: 10%; bottom: 10%;
-			width: 2px;
-			background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.2), transparent);
+			width: 5px;
+			background: linear-gradient(to bottom, transparent, var(--about-right-border), transparent);
 		}
 		html.dark .about-left::after {
-			background: linear-gradient(to bottom, transparent, var(--red), transparent);
+			background: linear-gradient(to bottom, transparent, var(--about-right-border), transparent);
 		}
 
 		.eyebrow {
-			font-size: 0.75rem;
+			font-size: 1rem;
 			font-weight: 500;
 			letter-spacing: 0.2em;
 			text-transform: uppercase;
 			color: var(--text-primary);
-			opacity: 0.5;
+			opacity: 1;
 			margin-bottom: 1rem;
 		}
 		html.dark .eyebrow { color: var(--amber); opacity: 1; }
@@ -289,8 +333,8 @@
 
 		.about-left h1 em {
 			font-style: normal;
-			color: var(--navy);
-			opacity: 0.4;
+			color: var(--red);
+			opacity: 0.9;
 		}
 		html.dark .about-left h1 { color: #fff; }
 		html.dark .about-left h1 em { color: var(--amber); opacity: 1; }
@@ -299,7 +343,7 @@
 			font-size: 1rem;
 			font-weight: 400;
 			color: var(--text-primary);
-			opacity: 0.75;
+			opacity: 1;
 			max-width: 38ch;
 			margin-bottom: 2.5rem;
 			transition: color 0.35s;
@@ -331,40 +375,38 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-			padding: 5rem 5rem 5rem 4rem;
+			padding: 0rem 3rem 5rem 6rem;
 			gap: 2rem;
 			background: var(--about-right-bg);
 			transition: background 0.35s;
 		}
-
-		.skill-block { }
 		.skill-label {
-			font-size: 0.7rem;
-			font-weight: 600;
+			font-size: 1.5rem;
+			font-weight: 1000;
 			letter-spacing: 0.15em;
 			text-transform: uppercase;
-			color: var(--text-primary);
+			color: var(--navy);
 			margin-bottom: 0.6rem;
-			opacity: 0.5;
+			opacity: 1;
 		}
 		html.dark .skill-label { color: var(--amber); opacity: 1; }
 
 		.skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 		.tag {
-			font-size: 0.78rem;
-			font-weight: 500;
-			color: var(--skill-tag-color);
-			border: 1px solid var(--skill-tag-border);
+			font-size: 1.2rem;
+			font-weight: 1000;
+			color: var(--amber);
+			border: 2px solid var(--skill-tag-border);
 			padding: 4px 12px;
-			border-radius: 4px;
-			background: var(--skill-tag-bg);
+			border-radius: 20px;
+			background: var(--navy);
 			transition: background 0.35s, color 0.35s, border-color 0.35s;
 		}
 
 		.red-bar {
 			width: 48px; height: 3px;
-			background: var(--text-primary);
-			opacity: 0.3;
+			background: var(--red);
+			opacity: 1;
 			margin-bottom: 2rem;
 		}
 		html.dark .red-bar { background: var(--red); opacity: 1; }
@@ -395,8 +437,8 @@
 
 		.filter-btn {
 			background: transparent;
-			border: 1.5px solid var(--filter-border);
-			color: var(--filter-color);
+			border: 1.5px solid var(--filter-btn-border);
+			color: var(--filter-btn-text);
 			font-family: var(--body);
 			font-size: 0.72rem;
 			font-weight: 500;
@@ -407,13 +449,21 @@
 			cursor: pointer;
 			transition: all 0.2s;
 		}
-		.filter-btn:hover { color: var(--filter-hover); border-color: var(--filter-hover); }
-		.filter-btn.active {
-			background: var(--navy);
-			border-color: var(--navy);
-			color: var(--amber);
+		.filter-btn:hover {
+			background: var(--filter-active-bg);
+			border-color: var(--filter-active-bg);
+			color: var(--filter-active-text);
 		}
-		html.dark .filter-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+		.filter-btn.active {
+			background: var(--filter-active-bg);
+			border-color: var(--filter-active-bg);
+			color: var(--filter-active-text);
+		}
+		html.dark .filter-btn.active {
+			background: var(--filter-active-bg);
+			border-color: var(--filter-active-bg);
+			color: var(--filter-active-text);
+		}
 
 		/* ── GRID ── */
 		.projects-grid {
@@ -421,28 +471,26 @@
 			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 			gap: 1rem;
 		}
-
 		.project-card {
-			background: rgba(255,255,255,0.55);
-			cursor: pointer;
-			transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
 			position: relative;
-			overflow: hidden;
 			border-radius: 8px;
-			border: 1.5px solid var(--grid-gap);
+			border: 1.5px solid var(--card-border);
+			background: var(--card-bg);
+			transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+			overflow: hidden;
+			cursor: pointer;
 		}
 		html.dark .project-card { background: var(--bg-card); }
 		.project-card:hover {
-			background: rgba(255,255,255,0.85);
+			background: var(--card-bg-hover);
 			transform: translateY(-3px);
-			box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+			box-shadow: 0 8px 24px var(--card-shadow);
 		}
 		html.dark .project-card:hover {
 			background: var(--bg-card-hover);
-			box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+			box-shadow: 0 8px 24px var(--card-shadow);
 		}
 		.project-card.hidden { display: none; }
-
 		.card-thumb {
 			aspect-ratio: 16/9;
 			overflow: hidden;
@@ -456,12 +504,10 @@
 			transition: transform 0.4s ease;
 		}
 		.project-card:hover .card-thumb img { transform: scale(1.04); }
-
 		.card-overlay {
 			position: absolute;
 			inset: 0;
-			background: linear-gradient(to top, rgba(0,48,73,0.7) 0%, transparent 60%);
-			opacity: 0;
+			background: linear-gradient(to top, var(--card-img-overlay) 0%, transparent 60%);			opacity: 0;
 			transition: opacity 0.3s;
 			display: flex;
 			align-items: center;
@@ -478,20 +524,32 @@
 			padding: 6px 16px;
 			border-radius: 4px;
 		}
-
 		.card-body { padding: 1.25rem 1.5rem 1.5rem; }
 		.card-body h3 {
 			font-family: var(--display);
 			font-size: 1.4rem;
 			letter-spacing: 0.04em;
-			color: var(--text-primary);
 			margin-bottom: 0.4rem;
 			transition: color 0.35s;
+			color: var(--card-title);
+
+			text-align: center;
+			display: block;
+			width: 100%;
+			background: linear-gradient(
+					to right,
+					transparent 0%,
+					rgb(0 48 73 / 0.1) 20%,
+					rgb(0 48 73 / 0.1) 80%,
+					transparent 100%
+			);
+			transform: translateY(-10px);
+			border-radius: 6px; /* Se mantiene, aunque las puntas serán transparentes */
 		}
 		.card-body p {
 			font-size: 0.85rem;
-			font-weight: 300;
-			color: var(--text-muted);
+			font-weight: 500;
+			color: var(--card-desc);
 			margin-bottom: 1rem;
 			line-height: 1.5;
 			transition: color 0.35s;
@@ -504,65 +562,68 @@
 			text-transform: uppercase;
 			padding: 3px 10px;
 			border-radius: 3px;
-			background: var(--tag-bg);
-			color: var(--tag-color);
-			border: 1px solid var(--tag-border);
-			transition: background 0.35s, color 0.35s;
+			background: var(--tag-yellow-bg);
+			color: var(--tag-yellow-color);
+			border: 1px solid var(--tag-yellow-color);
 		}
 		.card-tag.red {
 			background: var(--tag-red-bg);
 			color: var(--tag-red-color);
-			border-color: var(--tag-red-bg);
+			border-color: var(--tag-red-color);
 		}
 		.card-tag.blue {
-			background: rgba(0,48,73,0.1);
-			color: #003049;
-			border-color: rgba(0,48,73,0.2);
+			background: var(--tag-blue-bg);
+			color: var(--tag-blue-color);
+			border-color: var(--tag-blue-color);
 		}
-		html.dark .card-tag.blue {
-			background: rgba(100,180,255,0.1);
-			color: #90caff;
-			border-color: rgba(100,180,255,0.25);
+
+		html.dark .card-body h3 {
+			font-family: var(--display);
+			font-size: 1.4rem;
+			letter-spacing: 0.04em;
+			margin-bottom: 0.4rem;
+			transition: color 0.35s;
+			color: var(--card-title);
+
+			text-align: center;
+			display: block;
+			width: 100%;
+			background: linear-gradient(
+					to right,
+					transparent 0%,
+					rgba(252 ,191, 73,0.1) 30%,
+					rgba(252 ,191, 73,0.1) 80%,
+					transparent 100%
+			);
+			transform: translateY(-10px);
+			border-radius: 6px; /* Se mantiene, aunque las puntas serán transparentes */
 		}
-		font-size: 1.4rem;
-		letter-spacing: 0.04em;
-		color: var(--white);
-		margin-bottom: 0.4rem;
-		}
-		.card-body p {
-			font-size: 0.85rem;
-			font-weight: 300;
-			color: rgba(255,255,255,0.55);
-			margin-bottom: 1rem;
-			line-height: 1.5;
-		}
-		.card-tags {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 0.4rem;
-		}
-		.card-tag {
+
+		html.dark .card-tag {
 			font-size: 0.65rem;
 			font-weight: 500;
 			letter-spacing: 0.1em;
 			text-transform: uppercase;
 			padding: 3px 10px;
 			border-radius: 3px;
-			background: rgba(252,191,73,0.12);
-			color: var(--amber);
-			border: 1px solid rgba(252,191,73,0.25);
-		}
-		.card-tag.red {
-			background: rgba(214,40,40,0.12);
-			color: #ff9090;
-			border-color: rgba(214,40,40,0.3);
-		}
-		.card-tag.blue {
-			background: rgba(100,180,255,0.1);
-			color: #90caff;
-			border-color: rgba(100,180,255,0.25);
-		}
+			transition: background 0.35s, color 0.35s;
+			background: var(--tag-bg);
+			color: var(--tag-color);
+			border-color: var(--tag-red-color);
 
+			border: 1px solid;
+		}
+		html.dark .card-tag.red {
+			background: var(--tag-red-bg);
+			color: var(--tag-red-color);
+			border-color: var(--tag-red-color);
+		}
+		html.dark .card-tag.blue {
+			background: var(--tag-blue-bg);
+			color: var(--tag-blue-color);
+			border-color: var(--tag-red-color);
+		}
+		
 		@keyframes cardIn {
 			from { opacity: 0; transform: translateY(10px); }
 			to   { opacity: 1; transform: translateY(0); }
@@ -625,8 +686,8 @@
 			content: '';
 			position: absolute;
 			right: 0; top: 10%; bottom: 10%;
-			width: 2px;
-			background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.15), transparent);
+			width: 5px;
+			background: linear-gradient(to bottom, transparent, var(--red), transparent);
 		}
 		html.dark .contact-left::after {
 			background: linear-gradient(to bottom, transparent, var(--red), transparent);
@@ -640,13 +701,13 @@
 			margin-bottom: 1.5rem;
 			transition: color 0.35s;
 		}
-		.contact-left h2 em { font-style: normal; opacity: 0.35; }
+		.contact-left h2 em { font-style: normal; opacity: 1; color: var(--red);}
 		html.dark .contact-left h2 em { color: var(--amber); opacity: 1; }
 		.contact-left > p {
 			font-size: 1rem;
 			font-weight: 400;
 			color: var(--text-primary);
-			opacity: 0.7;
+			opacity: 1;
 			max-width: 36ch;
 			line-height: 1.65;
 			margin-bottom: 2.5rem;
@@ -681,22 +742,22 @@
 			flex-direction: column;
 			justify-content: center;
 			padding: 5rem 5rem 5rem 4rem;
-			background: var(--about-right-bg);
+			background: var(--bg-secondary);
 			transition: background 0.35s;
 		}
 		.contact-form-title {
 			font-family: var(--display);
 			font-size: 1.8rem;
 			letter-spacing: 0.04em;
-			color: var(--text-primary);
+			color: var(--info-right-text);
 			margin-bottom: 0.3rem;
 			transition: color 0.35s;
 		}
 		html.dark .contact-form-title { color: #fff; }
 		.contact-form-sub {
-			font-size: 0.85rem;
-			color: var(--text-primary);
-			opacity: 0.5;
+			font-size: 1rem;
+			color: var(--info-right-subtext);
+			opacity: 1;
 			margin-bottom: 1.75rem;
 		}
 		html.dark .contact-form-sub { color: rgba(255,255,255,0.45); opacity: 1; }
@@ -708,8 +769,8 @@
 			font-weight: 600;
 			letter-spacing: 0.12em;
 			text-transform: uppercase;
-			color: var(--text-primary);
-			opacity: 0.5;
+			color: var(--info-right-text);
+			opacity: 1;
 			transition: color 0.35s;
 		}
 		html.dark .form-field label { color: rgba(255,255,255,0.45); opacity: 1; }
@@ -738,9 +799,9 @@
 		.form-field input:focus,
 		.form-field textarea:focus,
 		.form-field select:focus {
-			border-color: var(--navy);
+			border-color: var(--red);
 			background: rgba(255,255,255,0.75);
-			box-shadow: 0 0 0 3px rgba(0,48,73,0.1);
+			box-shadow: 0 0 0 5px rgba(252,191,73,0.12);
 		}
 		html.dark .form-field input:focus,
 		html.dark .form-field textarea:focus,
@@ -760,8 +821,8 @@
 			display: inline-flex;
 			align-items: center;
 			gap: 0.6rem;
-			background: var(--navy);
-			color: var(--amber);
+			background: var(--info-sumbit-bg);
+			color: var(--info-sumbit-color);
 			border: none;
 			border-radius: 6px;
 			padding: 0.72rem 1.6rem;
@@ -926,7 +987,7 @@
 		.modal-close {
 			position: absolute;
 			top: 0.9rem; right: 0.9rem;
-			background: var(--modal-close-bg, rgba(0,48,73,0.12));
+			background: var(--modal-muted, rgba(0,48,73,0.12));
 			border: none;
 			color: var(--modal-text);
 			width: 32px; height: 32px;
@@ -1002,8 +1063,8 @@
 		}
 
 		.modal-desc {
-			font-size: 0.87rem;
-			font-weight: 400;
+			font-size: 1rem;
+			font-weight: 500;
 			color: var(--modal-muted);
 			line-height: 1.65;
 			margin-bottom: 1.1rem;
@@ -1011,7 +1072,7 @@
 		}
 
 		.modal-feat-label {
-			font-size: 0.65rem;
+			font-size: 0.75rem;
 			font-weight: 600;
 			letter-spacing: 0.15em;
 			text-transform: uppercase;
@@ -1031,6 +1092,8 @@
 			align-items: center;
 			gap: 0.6rem;
 			font-size: 0.82rem;
+			font-weight: 500;
+
 			color: var(--modal-muted);
 			transition: color 0.35s;
 		}
