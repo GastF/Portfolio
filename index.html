@@ -28,7 +28,7 @@
 			--body:    'DM Sans', sans-serif;
 
 			/* LIGHT MODE (default) — vibrante */
-			--bg:           #D62828;
+			--bg:           #FCBF49;
 			--bg-secondary: #F77F00;
 			--bg-card:      rgba(0,48,73,0.08);
 			--bg-card-hover:rgba(0,48,73,0.14);
@@ -112,6 +112,12 @@
 		}
 
 		/* ── NAVBAR ── */
+		.logo {
+			font-family: var(--display);
+			font-size: 1.5rem;
+			letter-spacing: 0.08em;
+			color: var(--text-on-red);
+		}
 		.navbar {
 			position: fixed;
 			top: 0; left: 0; right: 0;
@@ -119,51 +125,79 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			padding: 0 2rem 0 3rem;
-			height: 64px;
-			background: var(--bg-nav);
-			border-bottom: 2px solid rgba(0,0,0,0.15);
+			padding: 0 2rem;
+			height: 80px; /* Un poco más alto para dar aire a los botones */
+			background: var(--bg-nav); /* Según el video, un rojo sólido */
+			border-bottom: none;
 			transition: background 0.35s;
 		}
 
-		.logo {
-			font-family: var(--display);
-			font-size: 1.5rem;
-			letter-spacing: 0.08em;
-			color: var(--text-on-red);
-		}
+		
 
 		.nav-tabs {
 			display: flex;
 			align-items: center;
-			gap: 0;
+			gap: 12px; /* Espacio entre las cápsulas */
+			background: rgba(0, 0, 0, 0.1); /* Fondo sutil para el contenedor de tabs si se desea */
+			padding: 8px;
+			border-radius: 50px;
 		}
 
 		.nav-btn {
 			background: transparent;
-			border: none;
+			border: 2px solid transparent;
 			cursor: pointer;
 			font-family: var(--body);
-			font-size: 0.8rem;
-			font-weight: 500;
-			letter-spacing: 0.12em;
+			font-size: 0.85rem;
+			font-weight: 700;
+			letter-spacing: 0.1em;
 			text-transform: uppercase;
-			color: rgba(0,0,0,0.45);
-			padding: 0 1.5rem;
-			height: 64px;
-			border-bottom: 3px solid transparent;
-			transition: color 0.2s, border-color 0.2s;
-			position: relative;
-			top: 1px;
-		}
-		html.dark .nav-btn { color: rgba(255,255,255,0.45); }
-		.nav-btn:hover { color: var(--text-on-red); }
-		html.dark .nav-btn:hover { color: #fff; }
-		.nav-btn.active {
 			color: var(--text-on-red);
-			border-bottom-color: var(--text-on-red);
+
+			/* Forma de cápsula */
+			padding: 0.6rem 1.8rem;
+			border-radius: 50px;
+
+			/* TRANSICIÓN CRÍTICA: Usamos un timing function tipo "back" para el rebote */
+			transition:
+					transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+					background-color 0.3s ease,
+					padding 0.3s ease,
+					letter-spacing 0.3s ease,
+					color 0.3s ease;
+
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			outline: none;
 		}
-		html.dark .nav-btn.active { color: var(--amber); border-bottom-color: var(--amber); }
+		html.dark .nav-btn { 
+			color: rgba(255,255,255,0.45); 
+		}
+		.nav-btn:hover {
+			/* El scale(1.1) da el crecimiento físico */
+			/* El translateY ayuda a que se sienta que "flota" hacia el usuario */
+			transform: scale(1.1) translateY(-2px);
+			background: rgba(255, 255, 255, 0.15);
+			letter-spacing: 0.15em; /* Un pequeño crecimiento extra en el texto */
+			color: #fff;
+		}
+		html.dark .nav-btn:hover { 
+			color: #fff; 
+		}
+		.nav-btn.active {
+			background-color: #F7D081;
+			color: #003049;
+			border-color: #003049;
+			transform: scale(1.05); /* Un poco más grande que el estado reposo */
+			box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+		}
+		.nav-btn:active {
+			transform: scale(0.95);
+		}
+		html.dark .nav-btn.active {
+			background-color: var(--amber);
+			color: #1a1a1a;		}
 
 		/* ── THEME TOGGLE ── */
 		.theme-toggle {
