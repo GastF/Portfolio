@@ -21,6 +21,26 @@ const PROJECTS = {
             'images/gallery/Mokens/vfx.gif'
         ]
     },
+    navalConquest: {
+        title: 'Naval Conquest',
+        desc: 'Battle Royale game with up to 16 players, Sail your ship and aim your cannons to defeat your foes. This project really challenged me to push my self and learn a lot about networking and optimization',
+        linkLabel: 'Google Play',
+        linkIcon: 'fa-brands fa-google-play',
+        tags: ['Professional','Multiplayer','Netcode For Gameobjects','Gameplay','VFX'],
+        features: [
+            'Gameplay programming',
+            'Networked multiplayer',
+            'UI programming',
+            'Mobile CPU & memory optimization',
+            'Enemy AI state machines',
+        ],
+        gallery: [
+            'images/gallery/NavalConquest/4.jpg',
+            'images/gallery/NavalConquest/2.jpg',
+            'images/gallery/NavalConquest/3.jpg',
+            'images/gallery/NavalConquest/1.jpg',
+        ]
+    },
     bubble: {
         title: 'Bubble Defender',
         desc: 'GGJ 2025 entry. A tower defense about protecting the bubble kingdom, featuring custom shaders and particle VFX.',
@@ -60,7 +80,7 @@ const PROJECTS = {
     },
     kingwave: {
         title: 'The King Wave',
-        desc: 'Tower defense designed with scalability and data-oriented principles. Enemies, waves, and towers managed entirely through scriptable objects.',
+        desc: 'Tower defense designed with scalability and data-oriented principles. Enemies, waves, and towers managed entirely through scriptable objects. This is a project that i often go back to making small improvements over time',
         link: 'https://ghastt.itch.io/the-king-wave',
         tags: ['Personal','Gameplay','ShaderGraph'],
         features: [

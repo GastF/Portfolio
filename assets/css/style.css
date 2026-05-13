@@ -139,7 +139,7 @@ body {
 /* ── NAVBAR ── */
 .logo {
     font-family: var(--display);
-    font-size: 1.5rem;
+    font-size: 2rem;
     letter-spacing: 0.08em;
     color: var(--text-on-red);
 }
@@ -156,8 +156,6 @@ body {
     border-bottom: none;
     transition: background 0.35s;
 }
-
-
 
 .nav-tabs {
     display: flex;
@@ -346,9 +344,9 @@ html.dark .about-left p { color: rgba(255,255,255,0.7); opacity: 1; }
 }
 html.dark .socials a { border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.6); }
 .socials a:hover {
-    border-color: var(--navy);
+    border-color: var(--amber);
     color: var(--navy);
-    background: rgba(0,48,73,0.1);
+    background: rgb(214 40 40);
 }
 html.dark .socials a:hover { border-color: var(--amber); color: var(--amber); background: rgba(252,191,73,0.08); }
 
@@ -1104,3 +1102,32 @@ html.dark .modal-feat-label { color: var(--amber); opacity: 1; }
     .about-right { padding: 2rem 2rem 4rem; }
     .projects-section { padding: 2rem 1.5rem 5rem; }
 }
+.btn-view-projects {
+    margin-top: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--red);
+    color: var(--amber);
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1.8rem;
+    font-family: var(--body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s, gap 0.2s;
+    align-self: flex-start;
+}
+.btn-view-projects:hover {
+    background: var(--amber);
+    color: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(214,40,40,0.35);
+    gap: 1rem;
+}
+.btn-view-projects:active { transform: translateY(0); }
+html.dark .btn-view-projects { background: var(--amber); color: var(--navy); }
+html.dark .btn-view-projects:hover { background: #e0a800; box-shadow: 0 6px 20px rgba(252,191,73,0.3); }

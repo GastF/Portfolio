@@ -132,6 +132,12 @@ function closeModal() {
     mediaEl.innerHTML = '';
 }
 
+document.getElementById('btnViewProjects')?.addEventListener('click', () => {
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active-section'));
+    document.querySelector('.nav-btn[data-section="projects-section"]').classList.add('active');
+    document.getElementById('projects-section').classList.add('active-section');
+});
 document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('click', () => openModal(card.dataset.id));
 });
