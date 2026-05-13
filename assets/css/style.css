@@ -1087,6 +1087,56 @@ html.dark .modal-feat-label { color: var(--amber); opacity: 1; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 860px) {
+    /* NAVBAR MOBILE */
+    .navbar {
+        height: auto;
+        padding: 0.6rem 1rem;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+    .logo {
+        font-size: 1.4rem;
+    }
+    .nav-tabs {
+        gap: 4px;
+        padding: 5px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-btn {
+        font-size: 0.7rem;
+        padding: 0.45rem 1rem;
+        letter-spacing: 0.06em;
+    }
+    .nav-socials {
+        display: none;
+    }
+    .theme-toggle {
+        margin-left: 0.5rem;
+    }
+
+    /* SECTIONS */
+    .page-section {
+        padding-top: 80px; /* compensa el navbar más alto */
+    }
+
+    /* ABOUT */
+    .about-layout { grid-template-columns: 1fr; }
+    .about-left { padding: 3rem 2rem 2rem; }
+    .about-left::after { display: none; }
+    .about-right { padding: 2rem 2rem 4rem; }
+
+    /* CONTACT */
+    .contact-layout { grid-template-columns: 1fr; }
+    .contact-left { padding: 3rem 2rem 2rem; }
+    .contact-left::after { display: none; }
+    .contact-right { padding: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+
+    /* PROJECTS */
+    .projects-section { padding: 2rem 1.5rem 5rem; }
+
+    /* MODAL */
     .modal {
         grid-template-columns: 1fr;
         max-height: 92vh;
@@ -1095,12 +1145,16 @@ html.dark .modal-feat-label { color: var(--amber); opacity: 1; }
     .modal-left { border-radius: 10px 10px 0 0; min-height: 240px; }
     .modal-media { min-height: 200px; }
     .modal-right { border-left: none; border-top: 1px solid var(--modal-border); overflow-y: visible; }
-    .navbar { padding: 0 1.5rem; }
-    .about-layout { grid-template-columns: 1fr; }
-    .about-left { padding: 3rem 2rem 2rem; }
-    .about-left::after { display: none; }
-    .about-right { padding: 2rem 2rem 4rem; }
-    .projects-section { padding: 2rem 1.5rem 5rem; }
+}
+
+/* Para pantallas muy chicas (iPhone SE, etc.) */
+@media (max-width: 400px) {
+    .logo { font-size: 1.2rem; }
+    .nav-btn {
+        font-size: 0.62rem;
+        padding: 0.4rem 0.75rem;
+    }
+    .nav-tabs { gap: 2px; padding: 4px; }
 }
 .btn-view-projects {
     margin-top: 2rem;
