@@ -6,7 +6,7 @@ const PROJECTS = {
         link: 'https://play.google.com/store/apps/details?id=com.mokensleague.mobile.alpha',
         linkLabel: 'Google Play',
         linkIcon: 'fa-brands fa-google-play',
-        tags: ['Professional','Multiplayer','Gameplay','VFX'],
+        tags: ['Professional','Multiplayer','Gameplay','Cross Platform','VFX'],
         features: [
             'Photon Quantum deterministic multiplayer',
             'Client-server API communication',
@@ -26,15 +26,18 @@ const PROJECTS = {
         desc: 'Battle Royale game with up to 16 players, Sail your ship and aim your cannons to defeat your foes. This project really challenged me to push my self and learn a lot about networking and optimization',
         linkLabel: 'Google Play',
         linkIcon: 'fa-brands fa-google-play',
-        tags: ['Professional','Multiplayer','Netcode For Gameobjects','Gameplay','VFX'],
+        tags: ['Professional','Multiplayer','Netcode For Gameobjects','Gameplay','Battle Royale','VFX'],
         features: [
             'Gameplay programming',
             'Networked multiplayer',
+            'IAP and Unity Services',
             'UI programming',
             'Mobile CPU & memory optimization',
             'Enemy AI state machines',
         ],
+        video: 'images/gallery/NavalConquest/5.mp4',
         gallery: [
+            'images/gallery/NavalConquest/5.gif',
             'images/gallery/NavalConquest/4.jpg',
             'images/gallery/NavalConquest/2.jpg',
             'images/gallery/NavalConquest/3.jpg',
@@ -45,7 +48,7 @@ const PROJECTS = {
         title: 'Bubble Defender',
         desc: 'GGJ 2025 entry. A tower defense about protecting the bubble kingdom, featuring custom shaders and particle VFX.',
         link: 'https://ghastt.itch.io/bubble-defender',
-        tags: ['Game Jam','Gameplay','VFX'],
+        tags: ['Game Jam','Gameplay','Tower Defense','VFX'],
         features: [
             'Gameplay programming',
             'Particle systems and VFX',
@@ -61,12 +64,11 @@ const PROJECTS = {
     },
     parvo: {
         title: 'Parvo',
-        desc: 'An adventure platformer about a small knight wielding the biggest sword imaginable. Features enemy AI and tight game feel.',
+        desc: 'An adventure platformer about a small knight wielding the biggest sword imaginable. This is a project that i really like, i really enjoy the challenging platforming.',
         link: 'https://ghastt.itch.io/parvo',
-        tags: ['Personal','Gameplay','AI'],
+        tags: ['Personal','Gameplay','Platformer'],
         features: [
             'Gameplay programming',
-            'UI programming',
             'Enemy AI state machines',
             'Level design',
             'Game design'
@@ -82,7 +84,7 @@ const PROJECTS = {
         title: 'The King Wave',
         desc: 'Tower defense designed with scalability and data-oriented principles. Enemies, waves, and towers managed entirely through scriptable objects. This is a project that i often go back to making small improvements over time',
         link: 'https://ghastt.itch.io/the-king-wave',
-        tags: ['Personal','Gameplay','ShaderGraph'],
+        tags: ['Personal','Gameplay','ShaderGraph','Tower Defense'],
         features: [
             'Gameplay programming',
             'UI programming',

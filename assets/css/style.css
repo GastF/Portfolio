@@ -383,12 +383,12 @@ html.dark .skill-label { color: var(--amber); opacity: 1; }
 }
 
 .red-bar {
-    width: 48px; height: 3px;
+    width: 48px; height: 5px;
     background: var(--red);
-    opacity: 1;
-    margin-bottom: 2rem;
+    opacity: 0;
+    margin-bottom: -3.5rem;
 }
-html.dark .red-bar { background: var(--red); opacity: 1; }
+html.dark .red-bar { background: var(--red); opacity: 0; }
 
 /* ── PROJECTS ── */
 .projects-section {
@@ -397,7 +397,10 @@ html.dark .red-bar { background: var(--red); opacity: 1; }
     margin: 0 auto;
 }
 
-.section-header { margin-bottom: 2.5rem; }
+.section-header {
+    margin-bottom: 2.5rem; 
+    margin-top: -1rem;
+}
 .section-header h2 {
     font-family: var(--display);
     font-size: 3rem;
@@ -411,7 +414,7 @@ html.dark .red-bar { background: var(--red); opacity: 1; }
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
-    margin-bottom: 2.5rem;
+    margin-bottom: .5rem;
 }
 
 .filter-btn {
@@ -1184,4 +1187,51 @@ html.dark .modal-feat-label { color: var(--amber); opacity: 1; }
 }
 .btn-view-projects:active { transform: translateY(0); }
 html.dark .btn-view-projects { background: var(--amber); color: var(--navy); }
-html.dark .btn-view-projects:hover { background: #e0a800; box-shadow: 0 6px 20px rgba(252,191,73,0.3); }
+html.dark .btn-view-projects:hover { ba ckground: #e0a800; box-shadow: 0 6px 20px rgba(252,191,73,0.3); }
+
+.btn-contact {
+    margin-top: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--red);
+    color: var(--amber);
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1.8rem;
+    font-family: var(--body);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s, gap 0.2s;
+    align-self: flex-start;
+}
+.btn-contact:hover {
+    background: var(--amber);
+    color: var(--navy);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(214,40,40,0.35);
+    gap: 1rem;
+}
+.btn-contact:active { transform: translateY(0); }
+html.dark .btn-contact { background: var(--amber); color: var(--navy); }
+html.dark .btn-contact:hover { background: #e0a800; box-shadow: 0 6px 20px rgba(252,191,73,0.3); }
+.tag {
+    cursor: pointer;
+    transition: background 0.35s, color 0.35s, border-color 0.35s, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+}
+.tag:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    background: var(--red);
+    color: var(--amber);
+    border-color: var(--navy);
+}
+html.dark .tag:hover {
+    background: var(--amber);
+    color: var(--navy);
+    border-color: var(--amber);
+    box-shadow: 0 6px 16px rgba(252,191,73,0.25);
+}
