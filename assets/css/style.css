@@ -109,7 +109,7 @@ html.dark {
     /* CARDS DARK */
     --card-bg:           rgba(0, 48, 73, 0.5);
     --card-bg-hover:     rgba(0, 48, 73, 0.85);
-    --card-border:       rgba(255, 255, 255, 0.08);
+    --card-border: rgb(255 255 255 / 0.3);
     --card-shadow:       rgba(0, 0, 0, 0.4);
     --card-title: #fcbf49;
     --card-desc:         rgba(255, 255, 255, 0.6);
