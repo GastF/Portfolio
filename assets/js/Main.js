@@ -155,6 +155,21 @@ document.getElementById('btnContact')?.addEventListener('click', () => {
     document.getElementById('contact-section').classList.add('active-section');
 });
 document.querySelectorAll('.project-card').forEach(card => {
+    const p = PROJECTS[card.dataset.id];
+
+    // ── botón "Play Now!" (solo si el proyecto tiene link) ──
+    if (p && p.link) {
+        const playBtn = document.createElement('a');
+        playBtn.className = 'card-play-btn';
+        playBtn.href = p.link;
+        playBtn.target = '_blank';
+        playBtn.rel = 'noopener';
+        playBtn.innerHTML = `<i class="${p.linkIcon || 'fa-solid fa-play'}"></i> Play Now!`;
+        // evita que al clickear el botón se abra también el modal
+        playBtn.addEventListener('click', e => e.stopPropagation());
+        card.querySelector('.card-body').appendChild(playBtn);
+    }
+
     card.addEventListener('click', () => openModal(card.dataset.id));
 });
 document.getElementById('modalClose').addEventListener('click', closeModal);
