@@ -1,3 +1,6 @@
+// si el sistema pide movimiento reducido, ningún video arranca solo (queda el poster)
+const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 // ── NAV TABS ──────────────────────────────────────────────
 document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -47,73 +50,105 @@ const modal   = document.getElementById('modal');
 
 let _currentProject = null;
 
+// devuelve los links de un proyecto en formato uniforme: [{url, label, icon}]
+function projectLinks(p) {
+    if (p.links && p.links.length) return p.links;
+    if (p.link) return [{ url: p.link, label: p.linkLabel, icon: p.linkIcon }];
+    return [];
+}
+
 function setActiveThumb(el) {
     document.querySelectorAll('#modalThumbs .gthumb, #modalThumbs .video-thumb')
         .forEach(t => t.classList.remove('active'));
     el.classList.add('active');
 }
 
-function showVideo(p, thumbEl) {
-    const mediaEl = document.getElementById('modalMedia');
-    const ext = p.video.split('.').pop().toLowerCase();
-    mediaEl.innerHTML = `<video controls autoplay muted loop style="width:100%;height:100%;object-fit:contain;display:block;background:#000"><source src="${p.video}" type="video/${ext}"></video>`;
+// media del modal: cada video tiene un .jpg hermano que se usa de poster/thumb
+const VIDEO_EXT = ['mp4', 'webm', 'ogg'];
+const isVideo   = src => VIDEO_EXT.includes((src || '').split('.').pop().toLowerCase());
+const posterFor = src => src.replace(/\.(mp4|webm|ogg)$/i, '.jpg');
+
+// items del carrusel del proyecto abierto: [video principal, ...galeria]
+let _currentItems = [];
+
+function mediaHTML(src, title) {
+    if (!src) return '';
+    if (!isVideo(src)) {
+        return `<img src="${src}" alt="${title}" style="width:100%;height:100%;object-fit:contain;display:block">`;
+    }
+    const ext = src.split('.').pop().toLowerCase();
+    const auto = REDUCED_MOTION.matches ? '' : 'autoplay';
+    return `<video controls ${auto} muted loop playsinline preload="metadata" poster="${posterFor(src)}"
+        style="width:100%;height:100%;object-fit:contain;display:block;background:#000"><source src="${src}" type="video/${ext}"></video>`;
+}
+
+function showMediaAt(i, thumbEl) {
+    const src = _currentItems[i];
+    if (!src) return;
+    document.getElementById('modalMedia').innerHTML = mediaHTML(src, _currentProject ? _currentProject.title : '');
     setActiveThumb(thumbEl);
 }
 
-function showImage(src, title, thumbEl) {
-    document.getElementById('modalMedia').innerHTML =
-        `<img src="${src}" alt="${title}" style="width:100%;height:100%;object-fit:contain;display:block">`;
-    setActiveThumb(thumbEl);
-}
+// para devolver el foco a la card que abrió el modal
+let _lastFocused = null;
 
 function openModal(id) {
     const p = PROJECTS[id];
     if (!p) return;
     _currentProject = p;
+    _lastFocused = document.activeElement;
 
     const mediaEl  = document.getElementById('modalMedia');
     const thumbsEl = document.getElementById('modalThumbs');
-    const ext = p.video ? p.video.split('.').pop().toLowerCase() : '';
-    const hasVideo = p.video && ['mp4','webm','ogg'].includes(ext);
 
-    // default media = video or first image
-    if (hasVideo) {
-        mediaEl.innerHTML = `<video controls autoplay muted loop style="width:100%;height:100%;object-fit:contain;display:block;background:#000"><source src="${p.video}" type="video/${ext}"></video>`;
-    } else {
-        const first = (p.gallery || [])[0] || '';
-        mediaEl.innerHTML = `<img src="${first}" alt="${p.title}" style="width:100%;height:100%;object-fit:contain;display:block">`;
-    }
+    // el video principal es el primer item del carrusel, después va la galería
+    _currentItems = (p.video ? [p.video] : []).concat(p.gallery || []);
+    mediaEl.innerHTML = mediaHTML(_currentItems[0], p.title);
 
-    // build thumb strip — video thumb first, then images (skip first image if it's the video poster)
-    let thumbsHTML = '';
-    if (hasVideo) {
-        const poster = (p.gallery || [])[0] || '';
-        thumbsHTML += `<div class="video-thumb active" onclick="showVideo(_currentProject, this)">
-      <img src="${poster}" alt="${p.title}">
-      <div class="play-icon"><i class="fa-solid fa-play"></i></div>
-    </div>`;
-    }
-    // show all gallery images (they're distinct from the video)
-    (p.gallery || []).forEach((src, i) => {
-        const activeClass = (!hasVideo && i === 0) ? ' active' : '';
-        thumbsHTML += `<div class="gthumb${activeClass}" onclick="showImage('${src}','${p.title}',this)">
-      <img src="${src}" alt="${p.title}">
-    </div>`;
-    });
+    // proyectos sin media (ej: trabajo bajo NDA) → modal de una sola columna
+    modal.classList.toggle('modal--no-media', _currentItems.length === 0);
+
+    // los thumbs son <button> para que se puedan recorrer con el teclado
+    const thumbsHTML = _currentItems.map((src, i) => {
+        const vid = isVideo(src);
+        const label = `${vid ? 'Video' : 'Image'} ${i + 1} of ${_currentItems.length} — ${p.title}`;
+        return `<button type="button" class="${vid ? 'video-thumb' : 'gthumb'}${i === 0 ? ' active' : ''}"
+      onclick="showMediaAt(${i}, this)" aria-label="${label}">
+      <img src="${vid ? posterFor(src) : src}" alt="" loading="lazy">
+      ${vid ? '<div class="play-icon"><i class="fa-solid fa-play"></i></div>' : ''}
+    </button>`;
+    }).join('');
     thumbsEl.innerHTML = thumbsHTML;
     thumbsEl.style.display = thumbsHTML ? 'flex' : 'none';
 
     // right column info
     document.getElementById('modalTitle').textContent = p.title;
 
-    const linkEl = document.getElementById('modalLink');
-    if (p.link) {
-        linkEl.href = p.link;
-        linkEl.style.display = 'inline-flex';
-        linkEl.innerHTML = `<i class="${p.linkIcon || 'fa-brands fa-itch-io'}"></i> ${p.linkLabel || 'Play it here'}`;
+    const studioEl = document.getElementById('modalStudio');
+    if (p.studio) {
+        studioEl.style.display = 'block';
+        studioEl.innerHTML = p.studio.url
+            ? `Developed at <a href="${p.studio.url}" target="_blank" rel="noopener">${p.studio.name}</a>`
+            : `Developed at ${p.studio.name}`;
     } else {
-        linkEl.style.display = 'none';
+        studioEl.style.display = 'none';
     }
+
+    const linksEl = document.getElementById('modalLinks');
+    const links = projectLinks(p);
+    linksEl.innerHTML = links.map(l =>
+        `<a class="modal-link" href="${l.url}" target="_blank" rel="noopener"><i class="${l.icon || 'fa-brands fa-itch-io'}"></i> ${l.label || 'Play it here'}</a>`
+    ).join('');
+    // sin links públicos: si el proyecto define un cta, va al formulario de contacto
+    if (!links.length && p.cta) {
+        const cta = document.createElement('button');
+        cta.type = 'button';
+        cta.className = 'modal-link';
+        cta.innerHTML = `<i class="${p.cta.icon}"></i> ${p.cta.label}`;
+        cta.addEventListener('click', () => { closeModal(); goToSection(p.cta.section); });
+        linksEl.appendChild(cta);
+    }
+    linksEl.style.display = linksEl.children.length ? 'flex' : 'none';
 
     document.getElementById('modalTags').innerHTML =
         (p.tags || []).map(t => `<span class="card-tag">${t}</span>`).join('');
@@ -123,58 +158,116 @@ function openModal(id) {
 
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
+    document.getElementById('modalClose').focus();
 }
 
 function closeModal() {
+    if (!overlay.classList.contains('open')) return;
     overlay.classList.remove('open');
     document.body.style.overflow = '';
     const mediaEl = document.getElementById('modalMedia');
     mediaEl.innerHTML = '';
+    // el foco vuelve a la card desde donde se abrió
+    if (_lastFocused && document.contains(_lastFocused)) _lastFocused.focus();
+    _lastFocused = null;
+}
+
+// mantiene el foco adentro del modal mientras está abierto
+function trapFocus(e) {
+    const focusables = modal.querySelectorAll('a[href], button:not([disabled]), video[controls], [tabindex]:not([tabindex="-1"])');
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last  = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+    }
 }
 // ── SKILL TAGS → PROJECTS ─────────────────────────────────
+// cambia de seccion y deja el tab del nav sincronizado
+function goToSection(sectionId) {
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active-section'));
+    document.querySelector(`.nav-btn[data-section="${sectionId}"]`)?.classList.add('active');
+    document.getElementById(sectionId)?.classList.add('active-section');
+}
+
 document.querySelectorAll('.about-right .tag').forEach(tag => {
-    tag.addEventListener('click', () => {
-        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active-section'));
-        document.querySelector('.nav-btn[data-section="projects-section"]').classList.add('active');
-        document.getElementById('projects-section').classList.add('active-section');
+    tag.addEventListener('click', () => goToSection('projects-section'));
+});
+
+document.getElementById('btnViewProjects')?.addEventListener('click', () => goToSection('projects-section'));
+document.getElementById('btnContact')?.addEventListener('click', () => goToSection('contact-section'));
+// ── MOVIMIENTO REDUCIDO ───────────────────────────────────
+const heroVideo = document.querySelector('.about-bg-video');
+if (heroVideo && REDUCED_MOTION.matches) {
+    heroVideo.removeAttribute('autoplay');
+    heroVideo.pause();
+}
+
+// ── PREVIEWS DE LAS CARDS ─────────────────────────────────
+// arrancan con preload="none": solo se ve el poster hasta que pasás el mouse,
+// así la grilla carga imágenes y no video
+document.querySelectorAll('.card-media').forEach(video => {
+    const card = video.closest('.project-card');
+    if (!card) return;
+    card.addEventListener('mouseenter', () => {
+        if (REDUCED_MOTION.matches) return;
+        const play = video.play();
+        if (play) play.catch(() => {}); // si el browser lo bloquea queda el poster
+    });
+    card.addEventListener('mouseleave', () => {
+        video.pause();
+        video.currentTime = 0;
     });
 });
 
-document.getElementById('btnViewProjects')?.addEventListener('click', () => {
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active-section'));
-    document.querySelector('.nav-btn[data-section="projects-section"]').classList.add('active');
-    document.getElementById('projects-section').classList.add('active-section');
-});
-
-document.getElementById('btnContact')?.addEventListener('click', () => {
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active-section'));
-    document.querySelector('.nav-btn[data-section="contact-section"]').classList.add('active');
-    document.getElementById('contact-section').classList.add('active-section');
-});
 document.querySelectorAll('.project-card').forEach(card => {
     const p = PROJECTS[card.dataset.id];
 
     // ── botón "Play Now!" (solo si el proyecto tiene link) ──
-    if (p && p.link) {
+    const mainLink = p ? projectLinks(p)[0] : null;
+    if (mainLink) {
         const playBtn = document.createElement('a');
         playBtn.className = 'card-play-btn';
-        playBtn.href = p.link;
+        playBtn.href = mainLink.url;
         playBtn.target = '_blank';
         playBtn.rel = 'noopener';
-        playBtn.innerHTML = `<i class="${p.linkIcon || 'fa-solid fa-play'}"></i> Play Now!`;
+        playBtn.innerHTML = `<i class="${mainLink.icon || 'fa-solid fa-play'}"></i> Play Now!`;
         // evita que al clickear el botón se abra también el modal
         playBtn.addEventListener('click', e => e.stopPropagation());
         card.querySelector('.card-body').appendChild(playBtn);
+    } else if (p && p.cta) {
+        // proyectos sin link público (NDA): el botón lleva al formulario de contacto
+        const ctaBtn = document.createElement('button');
+        ctaBtn.type = 'button';
+        ctaBtn.className = 'card-play-btn';
+        ctaBtn.innerHTML = `<i class="${p.cta.icon}"></i> ${p.cta.label}`;
+        ctaBtn.addEventListener('click', e => {
+            e.stopPropagation();
+            goToSection(p.cta.section);
+        });
+        card.querySelector('.card-body').appendChild(ctaBtn);
     }
 
     card.addEventListener('click', () => openModal(card.dataset.id));
+    // la card es role="button": Enter y Espacio la abren igual que el click
+    card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            openModal(card.dataset.id);
+        }
+    });
 });
 document.getElementById('modalClose').addEventListener('click', closeModal);
 overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Tab' && overlay.classList.contains('open')) trapFocus(e);
+});
 
 // ── CONTACT FORM (EmailJS) ────────────────────────────────
 const contactForm = document.getElementById('contactForm');

@@ -4,6 +4,9 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Gastón Flores | Unity Game Developer</title>
+	<link rel="icon" href="favicon.ico" sizes="any">
+	<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -48,13 +51,13 @@
 		
 		<div class="about-left">
 			<!-- VIDEO DE FONDO -->
-			<video class="about-bg-video" autoplay muted loop playsinline>
+			<video class="about-bg-video" autoplay muted loop playsinline preload="metadata" poster="images/Reel.jpg">
 				<source src="images/Reel.mp4" type="video/mp4">
 			</video>
 			<p class="eyebrow">Unity Game Developer</p>
 			<h1>Gameplay<br><em>Systems</em><br>&amp; Tech Art</h1>
 			<p>
-				I specialize in <b>gameplay</b> and <b>systems</b> programming. With a strong focus on <b>visuals</b>, <b>performance</b> and <b>game feel</b>.
+				I specialize in <b>gameplay</b> and <b>systems</b> programming, with a strong focus on <b>visuals</b>, <b>performance</b> and <b>game feel</b>.
 				<br>
 				My goal is to create polished and memorable experiences that feel great to play.
 			</p>
@@ -82,6 +85,8 @@
 					<span class="tag">Enemy AI</span>
 					<span class="tag">Physics</span>
 					<span class="tag">Multiplayer (Photon)</span>
+					<span class="tag">Mirror</span>
+					<span class="tag">Unity Multiplayer Services</span>
 					<span class="tag">Game Feel</span>
 				</div>
 			</div>
@@ -214,7 +219,7 @@
 
 <!-- ── MODAL ── -->
 <div class="modal-overlay" id="modalOverlay">
-	<div class="modal" id="modal">
+	<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
 		<button class="modal-close" id="modalClose"><i class="fa-solid fa-xmark"></i></button>
 
 		<!-- LEFT: media player + thumbnail strip -->
@@ -226,7 +231,8 @@
 		<!-- RIGHT: info -->
 		<div class="modal-right">
 			<h2 class="modal-title" id="modalTitle"></h2>
-			<a href="#" class="modal-link" id="modalLink" target="_blank"></a>
+			<p class="modal-studio" id="modalStudio"></p>
+			<div class="modal-links" id="modalLinks"></div>
 			<div class="modal-tags" id="modalTags"></div>
 			<div class="modal-divider"></div>
 			<p class="modal-desc" id="modalDesc"></p>
@@ -248,18 +254,41 @@
 		<div class="filters">
 			<button class="filter-btn active" data-filter="all">All</button>
 			<button class="filter-btn" data-filter="professional">Professional</button>
+			<button class="filter-btn" data-filter="freelance">Freelance</button>
 			<button class="filter-btn" data-filter="personal">Personal</button>
 			<button class="filter-btn" data-filter="gamejam">Game Jam</button>
 		</div>
 
 		<div class="projects-grid" id="projectsGrid">
 
+			<!-- CARD: The Walking Dead: Streets of Survival -->
+			<div class="project-card" role="button" tabindex="0"
+			     data-category="professional gameplay systems console"
+			     data-id="twd">
+				<div class="card-thumb">
+					<video class="card-media" src="images/gallery/TWD/trailer.card.mp4" poster="images/gallery/TWD/trailer.card.jpg" aria-label="The Walking Dead: Streets of Survival"
+					       muted loop playsinline preload="none"></video>
+					<div class="card-overlay"><span>View Project</span></div>
+				</div>
+				<div class="card-body">
+					<h3>The Walking Dead: Streets of Survival</h3>
+					<p>Arcade brawler shipped on Steam, Switch, PlayStation and Xbox.</p>
+					<div class="card-tags">
+						<span class="card-tag red">Professional</span>
+						<span class="card-tag blue">Gameplay</span>
+						<span class="card-tag blue">Systems</span>
+						<span class="card-tag">Console</span>
+					</div>
+				</div>
+			</div>
+
 			<!-- CARD: Mokens League -->
-			<div class="project-card"
+			<div class="project-card" role="button" tabindex="0"
 			     data-category="professional gameplay vfx"
 			     data-id="mokens">
 				<div class="card-thumb">
-					<img src="images/gallery/Mokens/3.gif" alt="Mokens League">
+					<video class="card-media" src="images/gallery/Mokens/3.card.mp4" poster="images/gallery/Mokens/3.jpg" aria-label="Mokens League"
+					       muted loop playsinline preload="none"></video>
 					<div class="card-overlay"><span>View Project</span></div>
 				</div>
 				<div class="card-body">
@@ -274,16 +303,17 @@
 			</div>
 			
 			<!-- CARD: Naval Conquest -->
-			<div class="project-card"
+			<div class="project-card" role="button" tabindex="0"
 			     data-category="professional gameplay vfx multiplayer"
 			     data-id="navalConquest">
 				<div class="card-thumb">
-					<img src="images/gallery/NavalConquest/5.gif" alt="Naval Conquest">
+					<video class="card-media" src="images/gallery/NavalConquest/5.card.mp4" poster="images/gallery/NavalConquest/5.jpg" aria-label="Naval Conquest"
+					       muted loop playsinline preload="none"></video>
 					<div class="card-overlay"><span>View Project</span></div>
 				</div>
 				<div class="card-body">
 					<h3>Naval Conquest</h3>
-					<p>Multiplayer Naval battle game developed for mobile.</p>
+					<p>Multiplayer naval battle game developed for mobile.</p>
 					<div class="card-tags">
 						<span class="card-tag red">Professional</span>
 						<span class="card-tag">Multiplayer</span>
@@ -294,12 +324,35 @@
 				</div>
 			</div>
 			
+			<!-- CARD: Freelance / NDA -->
+			<div class="project-card" role="button" tabindex="0"
+			     data-category="professional freelance gameplay"
+			     data-id="freelance">
+				<div class="card-thumb card-thumb--nda">
+					<div class="nda-plate">
+						<i class="fa-solid fa-file-signature"></i>
+						<span>Under NDA</span>
+					</div>
+					<div class="card-overlay"><span>View Project</span></div>
+				</div>
+				<div class="card-body">
+					<h3>Freelance &amp; Client Work</h3>
+					<p>Advergames and custom game projects delivered for clients since 2022.</p>
+					<div class="card-tags">
+						<span class="card-tag red">Freelance</span>
+						<span class="card-tag blue">Gameplay</span>
+						<span class="card-tag">Advergames</span>
+					</div>
+				</div>
+			</div>
+
 			<!-- CARD: Parvo -->
-			<div class="project-card"
+			<div class="project-card" role="button" tabindex="0"
 			     data-category="personal gameplay"
 			     data-id="parvo">
 				<div class="card-thumb">
-					<img src="images/gallery/Parvo/2.gif" alt="Parvo">
+					<video class="card-media" src="images/gallery/Parvo/2.card.mp4" poster="images/gallery/Parvo/2.jpg" aria-label="Parvo"
+					       muted loop playsinline preload="none"></video>
 					<div class="card-overlay"><span>View Project</span></div>
 				</div>
 				<div class="card-body">
@@ -314,11 +367,12 @@
 			</div>
 
 			<!-- CARD: The King Wave -->
-			<div class="project-card"
+			<div class="project-card" role="button" tabindex="0"
 			     data-category="personal gameplay"
 			     data-id="kingwave">
 				<div class="card-thumb">
-					<img src="images/gallery/TowerDefense/1.gif" alt="The King Wave">
+					<video class="card-media" src="images/gallery/TowerDefense/1.card.mp4" poster="images/gallery/TowerDefense/1.jpg" aria-label="The King Wave"
+					       muted loop playsinline preload="none"></video>
 					<div class="card-overlay"><span>View Project</span></div>
 				</div>
 				<div class="card-body">
@@ -333,11 +387,12 @@
 			</div>
 
 			<!-- CARD: Guau! Boutique -->
-			<div class="project-card"
+			<div class="project-card" role="button" tabindex="0"
 			     data-category="gamejam gameplay vfx"
 			     data-id="guau">
 				<div class="card-thumb">
-					<img src="images/gallery/Woof/Tuto.gif" alt="Guau Boutique">
+					<video class="card-media" src="images/gallery/Woof/Tuto.card.mp4" poster="images/gallery/Woof/Tuto.jpg" aria-label="Guau Boutique"
+					       muted loop playsinline preload="none"></video>
 					<div class="card-overlay"><span>View Project</span></div>
 				</div>
 				<div class="card-body">
@@ -352,11 +407,12 @@
 			</div>
 
 			<!-- CARD: Bubble Defender -->
-			<div class="project-card"
+			<div class="project-card" role="button" tabindex="0"
 			     data-category="gamejam gameplay vfx"
 			     data-id="bubble">
 				<div class="card-thumb">
-					<img src="images/gallery/BubbleDefender/01.gif" alt="Bubble Defender">
+					<video class="card-media" src="images/gallery/BubbleDefender/01.card.mp4" poster="images/gallery/BubbleDefender/01.jpg" aria-label="Bubble Defender"
+					       muted loop playsinline preload="none"></video>
 					<div class="card-overlay"><span>View Project</span></div>
 				</div>
 				<div class="card-body">
@@ -371,11 +427,12 @@
 			</div>
 
 			<!-- CARD: Poltergeist -->
-			<div class="project-card"
+			<div class="project-card" role="button" tabindex="0"
 			     data-category="gamejam gameplay"
 			     data-id="poltergeist">
 				<div class="card-thumb">
-					<img src="images/gallery/Poltergeist/gameplay.gif" alt="Poltergeist">
+					<video class="card-media" src="images/gallery/Poltergeist/gameplay.card.mp4" poster="images/gallery/Poltergeist/gameplay.jpg" aria-label="Poltergeist"
+					       muted loop playsinline preload="none"></video>
 					<div class="card-overlay"><span>View Project</span></div>
 				</div>
 				<div class="card-body">
