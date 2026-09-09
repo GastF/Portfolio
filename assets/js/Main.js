@@ -3,12 +3,7 @@ const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 // ── NAV TABS ──────────────────────────────────────────────
 document.querySelectorAll('.nav-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active-section'));
-        btn.classList.add('active');
-        document.getElementById(btn.dataset.section).classList.add('active-section');
-    });
+    btn.addEventListener('click', () => goToSection(btn.dataset.section));
 });
 
 // ── FILTERS ──────────────────────────────────────────────
@@ -21,7 +16,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
         let visible = 0;
         cards.forEach((card, i) => {
             const cats = card.dataset.category || '';
-            const show = f === 'all' || cats.includes(f);
+            const show = f === 'all' || cats.split(' ').includes(f);
             card.classList.remove('appearing');
             if (show) {
                 card.classList.remove('hidden');
@@ -159,6 +154,8 @@ function openModal(id) {
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
     document.getElementById('modalClose').focus();
+    // nueva entrada en el historial: el botón atrás cierra el modal
+    if (!_applyingHash && location.hash !== `#p/${id}`) location.hash = `#p/${id}`;
 }
 
 function closeModal() {
@@ -170,6 +167,10 @@ function closeModal() {
     // el foco vuelve a la card desde donde se abrió
     if (_lastFocused && document.contains(_lastFocused)) _lastFocused.focus();
     _lastFocused = null;
+    // reemplaza la entrada del proyecto en vez de apilar otra
+    if (!_applyingHash && location.hash.startsWith('#p/')) {
+        history.replaceState(null, '', '#projects');
+    }
 }
 
 // mantiene el foco adentro del modal mientras está abierto
@@ -187,13 +188,54 @@ function trapFocus(e) {
     }
 }
 // ── SKILL TAGS → PROJECTS ─────────────────────────────────
-// cambia de seccion y deja el tab del nav sincronizado
-function goToSection(sectionId) {
+// ── DEEP LINKS ────────────────────────────────────────────
+// la URL refleja el estado: #about, #projects, #contact y #p/<id> con el modal abierto,
+// así se puede compartir un proyecto puntual y el botón atrás del browser funciona
+const SECTION_OF_HASH = {
+    about:    'about-section',
+    projects: 'projects-section',
+    contact:  'contact-section'
+};
+const HASH_OF_SECTION = {
+    'about-section':    'about',
+    'projects-section': 'projects',
+    'contact-section':  'contact'
+};
+
+// mientras se aplica la URL, nadie vuelve a escribirla (evita el ida y vuelta)
+let _applyingHash = false;
+
+function showSection(sectionId) {
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active-section'));
     document.querySelector(`.nav-btn[data-section="${sectionId}"]`)?.classList.add('active');
     document.getElementById(sectionId)?.classList.add('active-section');
 }
+
+// cambia de seccion, deja el tab del nav sincronizado y actualiza la URL
+function goToSection(sectionId) {
+    showSection(sectionId);
+    if (!_applyingHash) {
+        const h = '#' + (HASH_OF_SECTION[sectionId] || 'about');
+        if (location.hash !== h) location.hash = h;
+    }
+}
+
+// arma el estado de la página a partir de la URL
+function applyHash() {
+    _applyingHash = true;
+    const h = decodeURIComponent(location.hash.slice(1));
+    if (h.startsWith('p/') && PROJECTS[h.slice(2)]) {
+        showSection('projects-section');
+        openModal(h.slice(2));
+    } else {
+        closeModal();
+        showSection(SECTION_OF_HASH[h] || 'about-section');
+    }
+    _applyingHash = false;
+}
+
+window.addEventListener('hashchange', applyHash);
 
 document.querySelectorAll('.about-right .tag').forEach(tag => {
     tag.addEventListener('click', () => goToSection('projects-section'));
@@ -202,10 +244,17 @@ document.querySelectorAll('.about-right .tag').forEach(tag => {
 document.getElementById('btnViewProjects')?.addEventListener('click', () => goToSection('projects-section'));
 document.getElementById('btnContact')?.addEventListener('click', () => goToSection('contact-section'));
 // ── MOVIMIENTO REDUCIDO ───────────────────────────────────
+// el video del hero solo se descarga en desktop y si no se pidió movimiento reducido;
+// en mobile queda el poster y no se bajan los ~4 MB del clip
 const heroVideo = document.querySelector('.about-bg-video');
-if (heroVideo && REDUCED_MOTION.matches) {
-    heroVideo.removeAttribute('autoplay');
-    heroVideo.pause();
+if (heroVideo && heroVideo.dataset.src
+    && window.matchMedia('(min-width: 861px)').matches
+    && !REDUCED_MOTION.matches) {
+    // autoplay como propiedad: el browser lo maneja nativo (y lo retoma al volver a la pestaña)
+    heroVideo.autoplay = true;
+    heroVideo.src = heroVideo.dataset.src;
+    const play = heroVideo.play();
+    if (play) play.catch(() => {});
 }
 
 // ── PREVIEWS DE LAS CARDS ─────────────────────────────────
@@ -350,3 +399,5 @@ setTheme(saved === 'dark');
 toggle.addEventListener('click', () => {
     setTheme(!document.documentElement.classList.contains('dark'));
 });
+// arranca leyendo la URL: permite entrar directo a #projects, #contact o #p/<proyecto>
+applyHash();

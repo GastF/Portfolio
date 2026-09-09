@@ -359,6 +359,41 @@ html.dark .about-left h1 em { color: var(--amber); opacity: 1; }
     margin-bottom: 2.5rem;
     transition: color 0.35s;
 }
+
+/* línea de credenciales debajo del título del hero */
+.about-left p.hero-shipped {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    max-width: 46ch;
+    margin-top: -1rem;
+    margin-bottom: 1.75rem;
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+/* el texto ocupa su propia fila: los pills quedan agrupados abajo y no sueltos */
+.hero-shipped-label { flex: 1 0 100%; }
+
+/* blanco sobre el video oscuro del hero: el rojo de marca no contrasta a este tamaño */
+.hero-years {
+    font-weight: 700;
+    color: #fff;
+}
+html.dark .hero-years { color: var(--amber); }
+.hero-platform {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px solid currentColor;
+    opacity: 0.9;
+}
 html.dark .about-left p {  color: var(--text-primary); opacity: 1; }
 
 .socials { display: flex; gap: 1rem; }
@@ -1335,6 +1370,16 @@ html.dark .modal-feat-label { color: var(--amber); opacity: 1; }
     }
     .nav-tabs { gap: 2px; padding: 4px; }
 }
+/* los dos CTA del hero van uno al lado del otro y bajan a dos filas si no entran */
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+.hero-actions .btn-view-projects,
+.hero-actions .btn-contact { margin-top: 0; }
+
 .btn-view-projects {
     margin-top: 2rem;
     display: inline-flex;

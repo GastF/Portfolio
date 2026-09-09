@@ -4,6 +4,26 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Gastón Flores | Unity Game Developer</title>
+	<meta name="description" content="Unity Game Developer specialized in gameplay and systems programming. Shipped titles on Steam, Nintendo Switch, PlayStation and Xbox, including The Walking Dead: Streets of Survival.">
+	<meta name="author" content="Gastón Flores">
+	<meta name="theme-color" content="#D62828">
+	<link rel="canonical" href="https://gastf.github.io/Portfolio/">
+
+	<!-- preview al compartir el link (LinkedIn, Discord, WhatsApp, Slack…) -->
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Gastón Flores — Portfolio">
+	<meta property="og:url" content="https://gastf.github.io/Portfolio/">
+	<meta property="og:title" content="Gastón Flores | Unity Game Developer">
+	<meta property="og:description" content="Gameplay and systems programming. Shipped titles on Steam, Nintendo Switch, PlayStation and Xbox.">
+	<meta property="og:image" content="https://gastf.github.io/Portfolio/og-image.jpg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content="Gastón Flores — Unity Game Developer. Shipped on Steam, Nintendo Switch, PlayStation and Xbox.">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Gastón Flores | Unity Game Developer">
+	<meta name="twitter:description" content="Gameplay and systems programming. Shipped titles on Steam, Nintendo Switch, PlayStation and Xbox.">
+	<meta name="twitter:image" content="https://gastf.github.io/Portfolio/og-image.jpg">
+
 	<link rel="icon" href="favicon.ico" sizes="any">
 	<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -14,7 +34,8 @@
 	<!-- EmailJS -->
 	<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 	<script>
-		// ── EMAILJS CONFIG ── Reemplazá estos 3 valores con los tuyos de emailjs.com
+		// ── EMAILJS CONFIG ── (la public key es pública por diseño; el envío se
+		// restringe por dominio desde el panel de emailjs.com)
 		const EMAILJS_PUBLIC_KEY  = 'La48OeqRFh-PaB51H';   // Account > API Keys
 		const EMAILJS_SERVICE_ID  = 'service_zs8wq04';   // Email Services > Service ID
 		const EMAILJS_TEMPLATE_ID = 'template_jglh9o8';  // Email Templates > Template ID
@@ -32,10 +53,10 @@
 		<button class="nav-btn" data-section="projects-section">Projects</button>
 		<button class="nav-btn" data-section="contact-section">Let's Work Together</button>
 		<div class="nav-socials">
-			<a class="nav-social-link" href="https://github.com/GastF" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-			<a class="nav-social-link" href="https://linkedin.com/in/gastonf/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-			<a class="nav-social-link" href="https://ghastt.itch.io/" target="_blank" title="Itch.io"><i class="fa-brands fa-itch-io"></i></a>
-			<a class="nav-social-link" href="https://drive.google.com/file/d/1IeNpHSAb82Mbjjlq1Vacc0SrDqllmy0v/view" target="_blank" title="Resume"><i class="fa-solid fa-paperclip"></i></a>
+			<a class="nav-social-link" href="https://github.com/GastF" target="_blank" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+			<a class="nav-social-link" href="https://linkedin.com/in/gastonf/" target="_blank" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+			<a class="nav-social-link" href="https://ghastt.itch.io/" target="_blank" title="Itch.io" aria-label="Itch.io"><i class="fa-brands fa-itch-io"></i></a>
+			<a class="nav-social-link" href="https://drive.google.com/file/d/1IeNpHSAb82Mbjjlq1Vacc0SrDqllmy0v/view" target="_blank" title="Resume" aria-label="Resume"><i class="fa-solid fa-paperclip"></i></a>
 		</div>
 		<button class="theme-toggle" id="themeToggle" title="Toggle dark mode" aria-label="Toggle dark mode">
 			<div class="theme-toggle-knob" id="themeKnob">☀️</div>
@@ -51,28 +72,38 @@
 		
 		<div class="about-left">
 			<!-- VIDEO DE FONDO -->
-			<video class="about-bg-video" autoplay muted loop playsinline preload="metadata" poster="images/Reel.jpg">
-				<source src="images/Reel.mp4" type="video/mp4">
-			</video>
+			<!-- el src lo pone Main.js: en mobile no se descarga, queda el poster -->
+			<video class="about-bg-video" muted loop playsinline preload="metadata"
+			       poster="images/Reel.jpg" data-src="images/Reel.mp4"></video>
 			<p class="eyebrow">Unity Game Developer</p>
 			<h1>Gameplay<br><em>Systems</em><br>&amp; Tech Art</h1>
+			<p class="hero-shipped">
+				<span class="hero-shipped-label"><span class="hero-years">5+ years</span> building games professionally · Shipped on</span>
+				<span class="hero-platform"><i class="fa-brands fa-steam"></i> Steam</span>
+				<span class="hero-platform"><i class="fa-solid fa-gamepad"></i> Nintendo Switch</span>
+				<span class="hero-platform"><i class="fa-brands fa-playstation"></i> PlayStation</span>
+				<span class="hero-platform"><i class="fa-brands fa-xbox"></i> Xbox</span>
+				<span class="hero-platform"><i class="fa-brands fa-android"></i> Android</span>
+			</p>
 			<p>
 				I specialize in <b>gameplay</b> and <b>systems</b> programming, with a strong focus on <b>visuals</b>, <b>performance</b> and <b>game feel</b>.
 				<br>
 				My goal is to create polished and memorable experiences that feel great to play.
 			</p>
 			<div class="socials">
-				<a href="https://github.com/GastF" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-				<a href="https://linkedin.com/in/gastonf/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-				<a href="https://ghastt.itch.io/" target="_blank" title="Itch.io"><i class="fa-brands fa-itch-io"></i></a>
-				<a href="https://drive.google.com/file/d/1IeNpHSAb82Mbjjlq1Vacc0SrDqllmy0v/view" target="_blank" title="Resume"><i class="fa-solid fa-paperclip"></i></a>
+				<a href="https://github.com/GastF" target="_blank" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+				<a href="https://linkedin.com/in/gastonf/" target="_blank" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+				<a href="https://ghastt.itch.io/" target="_blank" title="Itch.io" aria-label="Itch.io"><i class="fa-brands fa-itch-io"></i></a>
+				<a href="https://drive.google.com/file/d/1IeNpHSAb82Mbjjlq1Vacc0SrDqllmy0v/view" target="_blank" title="Resume" aria-label="Resume"><i class="fa-solid fa-paperclip"></i></a>
 			</div>
-			<button class="btn-view-projects" id="btnViewProjects">
-				View Projects <i class="fa-solid fa-arrow-right"></i>
-			</button>
-			<button class="btn-contact" id="btnContact">
-				Contact <i class="fa-solid fa-arrow-right"></i>
-			</button>
+			<div class="hero-actions">
+				<button class="btn-view-projects" id="btnViewProjects">
+					View Projects <i class="fa-solid fa-arrow-right"></i>
+				</button>
+				<button class="btn-contact" id="btnContact">
+					Contact <i class="fa-solid fa-arrow-right"></i>
+				</button>
+			</div>
 		</div>
 
 		<div class="about-right">
@@ -204,7 +235,7 @@
 					<textarea id="cf-message" name="message" placeholder="Tell me about your project..." required></textarea>
 				</div>
 
-				<div class="form-feedback" id="formFeedback"></div>
+				<div class="form-feedback" id="formFeedback" role="status" aria-live="polite"></div>
 
 				<button type="submit" class="form-submit" id="formSubmit">
 					<i class="fa-solid fa-paper-plane"></i>
